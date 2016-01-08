@@ -22,10 +22,16 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
                     redirectTo: '/'
                 });
         }]);
+
+    pizzaApp.factory('orders', function() {
+        var orders = [];
+        return orders;
+    });
+
         
-    pizzaApp.controller('mainController', function($scope, $http) {
+    pizzaApp.controller('mainController', function($scope, $http, orders, $location) {
         
-        $scope.orders = [];
+        $scope.orders = orders;
         
         $scope.totalPrice = function () {
             var total = 0;
@@ -60,6 +66,11 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
             $scope.orders.splice(index, 1);
               
         };
+
+         $scope.finalizeOrder = function () {
+            $location.path("/order");
+        };
+
          
     });
 
@@ -73,7 +84,9 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
          
     });
 
-    pizzaApp.controller('orderController', function($scope, $http) {
+    pizzaApp.controller('orderController', function($scope, $http, orders) {
+        
+        $scope.orders = orders;
         
         $scope.getContact = function () {
             $http.get('/order').success(function (res) {
