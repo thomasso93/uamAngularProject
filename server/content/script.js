@@ -104,7 +104,11 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
                 $scope.orderRes = res;
             });
         };
-         
+        
+        $scope.doTheBack = function() {
+          window.history.back();
+        };
+
     });
 
     pizzaApp.controller('statusController', function($scope, $http) {
