@@ -23,10 +23,11 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
                 });
         }]);
 
-
+    var orders = [];
+        
     pizzaApp.controller('mainController', function($scope, $http) {
         
-        $scope.orders = [];
+       
         
         $scope.getMenu = function () {
             $http.get('/menu').success(function (res) {
@@ -36,13 +37,13 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
         };
         
         $scope.addPizzaToBasket = function (pizza) {        
-            var order;
+            var order = [];
             
             order.name = pizza.name;
             order.price = pizza.price;
             order.quantity = pizza.quantity;
     
-            orders.append(order);
+            orders.push(order);
         }
          
     });
