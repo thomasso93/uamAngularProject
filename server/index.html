@@ -1,23 +1,38 @@
 <html ng-app="pizzaApp">
   <head>
     <meta charset="utf-8">
-    <title>Angular.js JSON Fetching Example</title>
+    <title>Pizzeria</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="script.js"></script>
   </head>
   <body ng-controller="mainController">
-    <h2>Adres pizzeri</h2>
-  
-      <div data-ng-init="getContact()">
-   
-        <h2>{{contactRes.name}}</h2><br>
-        {{contactRes.address.street}}<br>
-        {{contactRes.address.city}}<br>
-        {{contactRes.phone}}<br>
-        {{contactRes.hours}}<br>
-     
-    </div>
+      
+      <h1>Menu:</h1>
+      
+      <div data-ng-init="getMenu()">
+          
+      <table border="1">
+        <tr>
+            <th>Numer</th>
+            <th>Nazwa</th>
+            <th>Składniki</th>
+            <th>Cena</th>
+            <th>Ilość</th>
+            <th></th>
+        </tr>
+          
+        <tr ng-repeat="item in menuRes">
+            <td>  {{ item.id }} </td>
+            <td> {{ item.name}} </td>
+            <td><option ng-repeat="ing in item.ingredients" value="{{ing}}">{{ing}}</option></td>
+            <td> {{ item.price}} </td>
+              <td><input value="0" name="quantity"></td>
+            <td><button>DODAJ</button></td>
+        </tr>
+
+        </table>
+      </div>
 
  
   </body>
