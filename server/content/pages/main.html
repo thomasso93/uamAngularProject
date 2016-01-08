@@ -52,7 +52,7 @@
                 <tr ng-repeat="order in orders">
                     <td>{{order.name}}</td>   
                     <td>{{order.quantity}}</td>   
-                    <td>{{order.price}}</td>   
+                    <td>{{order.price.toFixed(2)}}</td>   
                     <td>
                         <button ng-click="deletePizzaFromBasket(pizza)">Usuń</button>
                     </td>
