@@ -17,7 +17,7 @@ var app = express(),
     i = 0;
 
 app.use(express.static(__dirname + '/../build/'));
-app.use(express.static(__dirname + '/scripts'));
+app.use(express.static(__dirname + '/content'));
 app.use(express.static(__dirname + '/css'));
 
 app.use(bodyParser.urlencoded({

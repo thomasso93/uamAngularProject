@@ -1,4 +1,16 @@
-var pizzaApp = angular.module('pizzaApp', []);
+var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
+
+    pizzaApp.config(['$routeProvider', function($routeProvider) {
+            $routeProvider.
+                when('/contact', {
+                    templateUrl: 'pages/contact.html',
+                    controller: 'mainController'
+                }).
+                otherwise({
+                    redirectTo: '/'
+                });
+        }]);
+
 
     pizzaApp.controller('mainController', function($scope, $http) {
         
