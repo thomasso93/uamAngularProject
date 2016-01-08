@@ -1,0 +1,67 @@
+<html ng-app="pizzaApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Pizzeria</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body ng-controller="mainController">
+      
+      <div class="main">
+          <div class="menu" data-ng-init="getMenu()">
+
+            <h1>Menu:</h1>  
+            <table border="1">
+                <tr>
+                    <th>Numer</th>
+                    <th>Nazwa</th>
+                    <th>Składniki</th>
+                    <th>Cena</th>
+                    <th>Ilość</th>
+                    <th></th>
+                </tr>
+
+                <tr ng-repeat="item in menuRes">
+                    <td>  {{ item.id }} </td>
+                    <td> {{ item.name}} </td>
+                    <td><option ng-repeat="ing in item.ingredients" value="{{ing}}">{{ing}}</option></td>
+                    <td> {{ item.price}} </td>
+                      <td><input value="0" name="quantity"></td>
+                    <td><button>DODAJ</button></td>
+                </tr>
+            </table>
+
+          </div>
+
+          <div class="basket">
+            <h1>Koszyk</h1>
+              
+              <table>
+                <tr>
+                    <th>Nazwa</th>
+                    <th>Ilość</th>
+                    <th>Cena</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td></td>  
+                    <td></td>  
+                    <td></td>  
+                    <td><button>Usuń</button></td>
+                </tr>
+                <tr>
+                    <td>Razem:</td>
+                    <td></td>
+                </tr>  
+                <tr>
+                    <td><button>Kontynuuj</button></td>  
+                </tr>  
+              </table>
+              
+          </div>
+      </div>          
+ 
+  </body>
+</html>
