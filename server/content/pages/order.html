@@ -2,7 +2,6 @@
   <head>
     <meta charset="utf-8">
     <title>Zamówienia</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="script.js"></script>
   </head>
@@ -14,12 +13,12 @@
     </div>
     <div>
 
-    <form action="status/:orderId">
-    Numer telefonu: <input type="text" name="phonenumber"><br>
+    <form name="form1" action="status/:orderId">
+    Numer telefonu: <input type="text" name="phonenumber" require ng-pattern="/^\(?([0-9]{3})\)?[- ]?([0-9]{3})[- ]?([0-9]{3})$/"><br>
     Ulica: <input type="text" name="street"><br>
     Uwagi: <input type="text" name="remarks"><br>
-    <input type="submit" value="Złóż zamówienie">
+    <input type="submit" value="Złóż zamówienie" ng-click="checkPhoneNumber(form1.phonenumber)">
     </form>
  </div>
-  </body>
+</body>
 </html>
