@@ -18,6 +18,10 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
                     templateUrl: 'pages/status.html',
                     controller: 'statusController'
                 }).
+                when('/', {
+                    templateUrl: 'pages/main.html',
+                    controller: 'mainController'
+                }).
                 otherwise({
                     redirectTo: '/'
                 });
@@ -63,7 +67,6 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
             }
             
             order.price = pizza.price * order.quantity;
-//            order.quantity = pizza.quantity;
     
             $scope.orders.push(order);
 
