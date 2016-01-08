@@ -14,6 +14,10 @@
     border: solid;
 }
 
+h1 {
+    text-align: center;
+}
+
 table#menu {
     border-collapse: collapse; 
     border: 1px;
@@ -21,4 +25,8 @@ table#menu {
 
 table#summary {
     border: 1px solid black;
+}
+
+td.menu { 
+    border-bottom: 1px;
 }

@@ -24,14 +24,16 @@
                 </tr>
 
                 <tr ng-repeat="pizza in menuRes">
-                    <td>  {{ pizza.id }} </td>
-                    <td> {{ pizza.name}} </td>
-                    <td>
+                    <td class="menu">  {{ pizza.id }} </td>
+                    <td class="menu"> {{ pizza.name}} </td>
+                    <td class="menu">
                         <option ng-repeat="ingredient in pizza.ingredients" value="{{ingredient}}">{{ingredient}}</option>
                     </td>
-                    <td> {{ pizza.price}} </td>
-                      <td><input id="{{pizza}}" name="quantity" ng-model="pizza.quantity"></td>
-                    <td>
+                    <td class="menu"> {{ pizza.price}} </td>
+                    <td class="menu">
+                          <input id="{{pizza}}" name="quantity" ng-model="pizza.quantity">
+                    </td>
+                    <td class="menu">
                         <button ng-click="addPizzaToBasket(pizza)">DODAJ</button>
                     </td>
                 </tr>
