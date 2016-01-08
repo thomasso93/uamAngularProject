@@ -24,6 +24,15 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.text());
 app.use(bodyParser.json());
 
+
+app.get('/', function (req, res) {
+    setTimeout(function () {
+        //es.send("hello world");
+        res.sendFile(__dirname + '/index.html');
+    }, _.random(100, 1500));
+});
+
+
 app.get('/contact', function (req, res) {
     setTimeout(function () {
         res.json({

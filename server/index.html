@@ -1,13 +1,19 @@
-<html>
+<html ng-app="pizzaApp">
 
     <head>
-    
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+        <script src="script.js"></script>
     </head>
     
-    <body>
+    <body ng-controller="mainController">
     
-        <p>Pizzeria</p>
+        <div>
+            <p>Pizzeria</p>
+                                        
+            <p>{{message}}</p>
     
+        </div>
     </body>
     
 </html>
