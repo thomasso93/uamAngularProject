@@ -1,0 +1,20 @@
+<html ng-app="pizzaApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Stan zamówienia</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body ng-controller="statusController">
+    Stan zamównia nr
+       <div data-ng-init="getStatus()">
+   
+        {{statusRes.id}}
+        {{statusRes.quantity}}
+  
+    </div>
+
+ 
+  </body>
+</html>

@@ -10,6 +10,14 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
                     templateUrl: 'pages/contact.html',
                     controller: 'contactController'
                 }).
+                when('/order', {
+                    templateUrl: 'pages/order.html',
+                    controller: 'orderController'
+                }).
+                when('/status', {
+                    templateUrl: 'pages/status.html',
+                    controller: 'statusController'
+                }).
                 otherwise({
                     redirectTo: '/'
                 });
@@ -32,6 +40,26 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
         $scope.getContact = function () {
             $http.get('/contact').success(function (res) {
                 $scope.contactRes = res;
+            });
+        };
+         
+    });
+
+    pizzaApp.controller('orderController', function($scope, $http) {
+        
+        $scope.getContact = function () {
+            $http.get('/order').success(function (res) {
+                $scope.orderRes = res;
+            });
+        };
+         
+    });
+
+    pizzaApp.controller('statusController', function($scope, $http) {
+        
+        $scope.getContact = function () {
+            $http.get('/status').success(function (res) {
+                $scope.statusRes = res;
             });
         };
          
