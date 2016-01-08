@@ -1,7 +1,7 @@
 <html ng-app="pizzaApp">
   <head>
     <meta charset="utf-8">
-    <title>Pizzeria</title>
+    <title>Pizzeria Zbyszek</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
@@ -9,11 +9,26 @@
   </head>
   <body ng-controller="mainController">
       
+      <header>
+        <div class="navi">
+            <!-- logo -->
+            <h1><a href="#/">Pizzeria Zbyszek</a></h1>
+
+            <!-- navigation menu -->
+            <nav>
+                <ul>
+                    <li><a id="menuBtn" href="#/menu" ng-class="{activeSmall:part == 'menu'}" >Menu</a></li>
+                    <li><a id="orderBtn" href="#/order" ng-class="{activeSmall:part == 'order'}">Zamówienie</a></li>
+                    <li><a id="statusBtn" href="#/status" ng-class="{activeSmall:part == 'status'}">Status</a></li>
+                    <li><a id="contactBtn" href="#/contact" ng-class="{activeSmall:part == 'conctact'}">Kontakt</a></li>
+       </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
       <div class="main">
-            Main page
-          <div ng-view></div>
-        
+          <div ng-view>
+          </div>
       </div>          
- 
   </body>
 </html>

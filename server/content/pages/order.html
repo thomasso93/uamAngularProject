@@ -1,0 +1,19 @@
+<html ng-app="pizzaApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Zamówienia</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body ng-controller="orderController">
+    Zamówienie nr
+       <div data-ng-init="getOrder()">
+   
+        {{orderRes.name}}
+  
+    </div>
+
+ 
+  </body>
+</html>
