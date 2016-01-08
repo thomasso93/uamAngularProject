@@ -29,10 +29,9 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
         
         $scope.totalPrice = function () {
             var total = 0;
-            var length = $scope.orders.length;
-            
-            for (var i=0; i < length+1; i++) {
-                var price = orders[i].price;
+      
+            for (var i=0; i < $scope.orders.length; i++) {
+                var price = $scope.orders[i].price;
                 total += price; 
             }
             return total;
