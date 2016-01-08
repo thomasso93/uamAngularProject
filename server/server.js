@@ -17,6 +17,7 @@ var app = express(),
     i = 0;
 
 app.use(express.static(__dirname + '/../build/'));
+app.use(express.static(__dirname + '/scripts'));
 
 app.use(bodyParser.urlencoded({
     extended: false

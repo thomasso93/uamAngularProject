@@ -1,19 +1,24 @@
 <html ng-app="pizzaApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular.js JSON Fetching Example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body ng-controller="mainController">
+    <h2>Adres pizzeri</h2>
+  
+      <div data-ng-init="getContact()">
+   
+        <h2>{{contactRes.name}}</h2><br>
+        {{contactRes.address.street}}<br>
+        {{contactRes.address.city}}<br>
+        {{contactRes.phone}}<br>
+        {{contactRes.hours}}<br>
+     
+    </div>
 
-    <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
-        <script src="script.js"></script>
-    </head>
-    
-    <body ng-controller="mainController">
-    
-        <div>
-            <p>Pizzeria</p>
-                                        
-            <p>{{message}}</p>
-    
-        </div>
-    </body>
-    
+ 
+  </body>
 </html>
