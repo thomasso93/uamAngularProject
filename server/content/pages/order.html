@@ -2,6 +2,7 @@
   <head>
     <meta charset="utf-8">
     <title>Zamówienia</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="script.js"></script>
   </head>
@@ -20,5 +21,28 @@
     <input type="submit" value="Złóż zamówienie" ng-click="checkPhoneNumber(form1.phonenumber)">
     </form>
  </div>
+      
+<div class="orderSummary">
+
+    <table id="summary">
+                <tr>
+                    <th>Nazwa</th>
+                    <th>Ilość</th>
+                    <th>Cena</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="order in orders">
+                    <td>{{order.name}}</td>   
+                    <td>{{order.quantity}}</td>   
+                    <td>{{order.price.toFixed(2)}}</td>   
+                </tr>
+                <tr>
+                    <td>Razem: {{totalPrice()}}</td>
+                    <td></td>
+                </tr>  
+                <tr>
+    
+</div>
+      
 </body>
 </html>

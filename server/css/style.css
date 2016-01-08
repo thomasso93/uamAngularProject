@@ -13,3 +13,12 @@
     margin: 5px;
     border: solid;
 }
+
+table#menu {
+    border-collapse: collapse; 
+    border: 1px;
+}
+
+table#summary {
+    border: 1px solid black;
+}
