@@ -34,7 +34,7 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
                 var price = $scope.orders[i].price;
                 total += price; 
             }
-            return total;
+            return total.toFixed(2);
         }; 
         
         $scope.getMenu = function () {
@@ -52,7 +52,14 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
             order.quantity = pizza.quantity;
     
             $scope.orders.push(order);
-        }
+
+        };
+
+         $scope.deletePizzaFromBasket = function (pizza) {        
+            var index = $scope.orders.indexOf(pizza);
+            $scope.orders.splice(index, 1);
+              
+        };
          
     });
 
