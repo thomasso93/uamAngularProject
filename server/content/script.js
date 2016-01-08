@@ -18,12 +18,24 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
 
     pizzaApp.controller('mainController', function($scope, $http) {
         
+        $scope.orders = [];
+        
         $scope.getMenu = function () {
             $http.get('/menu').success(function (res) {
                 $scope.menuRes = res;
             });
             
         };
+        
+        $scope.addPizzaToBasket = function (pizza) {        
+            var order;
+            
+            order.name = pizza.name;
+            order.price = pizza.price;
+            order.quantity = pizza.quantity;
+    
+            orders.append(order);
+        }
          
     });
 

@@ -23,13 +23,17 @@
                     <th></th>
                 </tr>
 
-                <tr ng-repeat="item in menuRes">
-                    <td>  {{ item.id }} </td>
-                    <td> {{ item.name}} </td>
-                    <td><option ng-repeat="ing in item.ingredients" value="{{ing}}">{{ing}}</option></td>
-                    <td> {{ item.price}} </td>
-                      <td><input value="0" name="quantity"></td>
-                    <td><button>DODAJ</button></td>
+                <tr ng-repeat="pizza in menuRes">
+                    <td>  {{ pizza.id }} </td>
+                    <td> {{ pizza.name}} </td>
+                    <td>
+                        <option ng-repeat="ingredient in pizza.ingredients" value="{{ingredient}}">{{ingredient}}</option>
+                    </td>
+                    <td> {{ pizza.price}} </td>
+                      <td><input id="{{pizza}}" value="0" name="quantity" ng-model="pizza.quantity"></td>
+                    <td>
+                        <button ng-click="addPizzaToBasket(pizza)">DODAJ</button>
+                    </td>
                 </tr>
             </table>
 
@@ -45,11 +49,13 @@
                     <th>Cena</th>
                     <th></th>
                 </tr>
-                <tr>
-                    <td></td>  
-                    <td></td>  
-                    <td></td>  
-                    <td><button>Usuń</button></td>
+                <tr ng-repeat="order in orders">
+                    <td>{{order.name}}</td>   
+                    <td>{{order.quantity}}</td>   
+                    <td>{{order.price}}</td>   
+                    <td>
+                        <button>Usuń</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>Razem:</td>
