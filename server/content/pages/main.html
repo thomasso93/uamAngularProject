@@ -30,7 +30,7 @@
                         <option ng-repeat="ingredient in pizza.ingredients" value="{{ingredient}}">{{ingredient}}</option>
                     </td>
                     <td> {{ pizza.price}} </td>
-                      <td><input id="{{pizza}}" value="0" name="quantity" ></td>
+                      <td><input id="{{pizza}}" name="quantity" ng-model="pizza.quantity"></td>
                     <td>
                         <button ng-click="addPizzaToBasket(pizza)">DODAJ</button>
                     </td>
@@ -58,7 +58,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Razem:</td>
+                    <td>Razem: {{totalPrice()}}</td>
                     <td></td>
                 </tr>  
                 <tr>
