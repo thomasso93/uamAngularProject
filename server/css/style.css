@@ -1,0 +1,15 @@
+.main {
+    display: inline-block;
+}
+
+.menu {
+     float: left;
+    margin: 5px;
+    border: solid;
+}
+
+.basket {
+    float: right;
+    margin: 5px;
+    border: solid;
+}
