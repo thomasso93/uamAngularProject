@@ -30,9 +30,9 @@
                         <option ng-repeat="ingredient in pizza.ingredients" value="{{ingredient}}">{{ingredient}}</option>
                     </td>
                     <td> {{ pizza.price}} </td>
-                      <td><input id="{{pizza}}" value="0" name="quantity" ng-model="pizza.quantity"></td>
+                      <td><input id="{{pizza}}" value="0" name="quantity" ></td>
                     <td>
-                        <button ng-click="$parent.addPizzaToBasket(pizza)">DODAJ</button>
+                        <button ng-click="addPizzaToBasket('dupadupa', '12', '2')">DODAJ</button>
                     </td>
                 </tr>
             </table>

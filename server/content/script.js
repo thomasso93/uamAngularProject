@@ -35,12 +35,12 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
             
         };
         
-        $scope.addPizzaToBasket = function (pizza) {        
+        $scope.addPizzaToBasket = function (name, price, quantity) {        
             var order;
             
-            order.name = pizza.name;
-            order.price = pizza.price;
-            order.quantity = pizza.quantity;
+            order.name = name;
+            order.price = price;
+            order.quantity = quantity;
     
             orders.append(order);
         }
