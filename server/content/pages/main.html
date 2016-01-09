@@ -29,9 +29,9 @@
                     <td class="menu">
                         <option ng-repeat="ingredient in pizza.ingredients" value="{{ingredient}}">{{ingredient}}</option>
                     </td>
-                    <td class="menu"> {{ pizza.price}} </td>
+                    <td class="menu"> {{ pizza.price.toFixed(2)}} </td>
                     <td class="menu">
-                          <input id="{{pizza}}" name="quantity" ng-model="pizza.quantity">
+                          <input class="menu" id="{{pizza}}" name="quantity" ng-model="pizza.quantity">
                     </td>
                     <td class="menu">
                         <button ng-click="addPizzaToBasket(pizza)">DODAJ</button>

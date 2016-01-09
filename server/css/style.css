@@ -30,3 +30,7 @@ table#summary {
 td.menu { 
     border-bottom: 1px;
 }
+
+input.menu {
+    width: 40px;
+}
