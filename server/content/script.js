@@ -68,7 +68,9 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
             
             order.price = pizza.price * order.quantity;
     
-            $scope.orders.push(order);
+            if (order.price != 0) {
+                $scope.orders.push(order);
+            }
 
         };
 

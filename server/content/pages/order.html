@@ -48,27 +48,27 @@
 
     </div>
       
-<div class="orderSummary">
+    <div class="orderSummary">
 
-    <table id="summary">
-                <tr>
-                    <th>Nazwa</th>
-                    <th>Ilość</th>
-                    <th>Cena</th>
-                    <th></th>
-                </tr>
-                <tr ng-repeat="order in orders">
-                    <td>{{order.name}}</td>   
-                    <td>{{order.quantity}}</td>   
-                    <td>{{order.price.toFixed(2)}}</td>   
-                </tr>
-                <tr>
-                    <td>Razem: {{totalPrice()}}</td>
-                    <td></td>
-                </tr>  
-                <tr>
-    
-</div>
+        <table id="summary">
+                    <tr>
+                        <th>Nazwa</th>
+                        <th>Ilość</th>
+                        <th>Cena</th>
+                        <th></th>
+                    </tr>
+                    <tr ng-repeat="order in orders">
+                        <td>{{order.name}}</td>   
+                        <td>{{order.quantity}}</td>   
+                        <td>{{order.price.toFixed(2)}}</td>   
+                    </tr>
+                    <tr>
+                        <td>Razem: {{totalPrice()}}</td>
+                        <td></td>
+                    </tr>  
+                    <tr>
+
+    </div>
       
 </body>
 </html>

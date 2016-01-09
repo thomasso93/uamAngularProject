@@ -21,6 +21,7 @@ h1 {
 table#menu {
     border-collapse: collapse; 
     border: 1px;
+    margin: 10px;
 }
 
 table#summary {
@@ -35,8 +36,9 @@ td.menu {
     border-bottom: 1px;
 }
 
-input.menu {
+input.menuInput {
     width: 40px;
+    border-radius: 5px;
 }
 
 form {
@@ -69,9 +71,61 @@ p {
 }
 
 .delete {
-    color: red;
+    background-color: red;
+/*    color: red;*/
 }
 
 button {
-    border-radius: 10px;
+    border-radius: 15px;
+}
+
+.addBtn {
+    font-weight: bold;
+    background-color: green;
+    font-size: 18pt;
+}
+
+td#pizzaId {
+    width: auto;
+}
+
+td {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14pt;
+}
+
+
+table#menu tr:nth-child(even) {
+    background-color: #3DA32F;
+
+}
+
+td#addBtn {
+    border: none;
+    background-color: white;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
 }

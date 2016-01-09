@@ -15,7 +15,7 @@
             <h1>Menu:</h1>  
             <table id="menu">
                 <tr>
-                    <th>Numer</th>
+                    <th>Nr</th>
                     <th>Nazwa</th>
                     <th>Składniki</th>
                     <th>Cena</th>
@@ -24,17 +24,17 @@
                 </tr>
 
                 <tr ng-repeat="pizza in menuRes">
-                    <td class="menu">  {{ pizza.id }} </td>
+                    <td class="menu" id="pizzaId">  {{ pizza.id }} </td>
                     <td class="menu"> {{ pizza.name}} </td>
                     <td class="menu">
                         <option ng-repeat="ingredient in pizza.ingredients" value="{{ingredient}}">{{ingredient}}</option>
                     </td>
                     <td class="menu"> {{ pizza.price.toFixed(2)}} </td>
                     <td class="menu">
-                          <input class="menu" id="{{pizza}}" name="quantity" ng-model="pizza.quantity">
+                          <input type="number" min="0" max="100" class="menuInput" id="{{pizza}}" name="quantity" ng-model="pizza.quantity">
                     </td>
-                    <td class="menu">
-                        <button ng-click="addPizzaToBasket(pizza)">DODAJ</button>
+                    <td class="menu" id="addBtn">
+                        <button class="addBtn" ng-click="addPizzaToBasket(pizza)">+</button>
                     </td>
                 </tr>
             </table>
