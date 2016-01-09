@@ -56,9 +56,9 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
         
         $scope.addPizzaToBasket = function (pizza) {        
             var order = {};
-            
+        
             order.name = pizza.name;
-            
+           
             if (typeof pizza.quantity === 'undefined') {
                 order.quantity = 1;
             } 
@@ -74,10 +74,17 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
 
         };
 
-         $scope.deletePizzaFromBasket = function (pizza) {        
-            var index = $scope.orders.indexOf(pizza);
+         $scope.deletePizzaFromBasket = function (order) {  
+            var index = 0;         
+ 
+            for (var i = 0; i < $scope.orders.length; i++){
+                if (order.name === $scope.orders[i].name ) {
+                    index = i;
+                    break;
+                }    
+              }  
+    
             $scope.orders.splice(index, 1);
-              
         };
 
          $scope.finalizeOrder = function () {
