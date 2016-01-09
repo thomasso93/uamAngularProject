@@ -27,6 +27,7 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
                 });
         }]);
 
+
     pizzaApp.factory('orders', function() {
         var orders = [];
         return orders;
@@ -107,7 +108,7 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
     pizzaApp.controller('orderController', function($scope, $http, orders) {
         
         $scope.orders = orders;
-        
+   
         $scope.getContact = function () {
             $http.get('/order').success(function (res) {
                 $scope.orderRes = res;
@@ -117,6 +118,13 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
         $scope.doTheBack = function() {
           window.history.back();
         };
+
+        $scope.isInvalid = function(field){
+            return $scope.myForm[field].$invalid && $scope.myForm[field].$dirty;
+        };
+  
+      
+
 
     });
 

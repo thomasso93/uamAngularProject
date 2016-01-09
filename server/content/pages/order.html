@@ -4,6 +4,7 @@
     <title>Zamówienia</title>
     <link rel="stylesheet" type="text/css" href="/style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.8/angular-messages.min.js"></script>
     <script src="script.js"></script>
   </head>
     
@@ -17,35 +18,37 @@
 
     <div class="orderForm">  
         <p>Zamówienie nr</p>
-        <form name="form1" action="status/:orderId">
-            <p>
+        <form name="myForm" action="status/:orderId">
+          <div ng-class="{error: isInvalid('phoneNumber')}">
                 <label>
                     Numer telefonu: 
                 </label>
-                <input class="order" type="text" name="phonenumber" require ng-pattern="/^\(?([0-9]{3})\)?[- ]?([0-9]{3})[- ]?([0-9]{3})$/">
-            </p>
+                <input type="text" name="phoneNumber" placeholder="Podaj nr telefonu" ng-model="phoneNumber" required/>
+                <span ng-show="isInvalid('phoneNumber')">phoneNumber is required</span>
 
-            <p>
+        </div>
+               <div ng-class="{error: isInvalid('street')}">
                 <label>
                     Ulica:
                 </label>
-                <input class="order" type="text" name="street">
-            </p>
+                <input type="text" placeholder="Podaj adres" name="street" ng-model="street" required>
+                <span ng-show="isInvalid('street')">street is required</span>
+           </div>
 
-            <p>
+            <div>
                 <label>
                     Uwagi: 
                 </label>
                 <input class="order" type="text" name="remarks">
-            </p>
+            
             <div class="orderBtn">
                 <input type="button" value="Powrót" ng-click="doTheBack()">
-                <input type="submit" value="Złóż zamówienie" ng-click="checkPhoneNumber(form1.phonenumber)">
+                <button ng-disabled="myForm.$invalid">Zatwierdź</button>
+             </div> 
             </div>
         </form>
     
-        
-
+    
     </div>
       
     <div class="orderSummary">
