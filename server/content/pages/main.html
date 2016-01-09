@@ -44,7 +44,7 @@
           <div class="basket">
             <h1>Koszyk</h1>
               
-              <table>
+              <table id="basket">
                 <tr>
                     <th>Nazwa</th>
                     <th>Ilość</th>
@@ -56,20 +56,15 @@
                     <td>{{order.quantity}}</td>   
                     <td>{{order.price.toFixed(2)}}</td>   
                     <td>
-                        <button ng-click="deletePizzaFromBasket(pizza)">Usuń</button>
+                        <button class="delete" ng-click="deletePizzaFromBasket(pizza)">X</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>Razem: {{totalPrice()}}</td>
-                    <td></td>
-                </tr>  
-                <tr>
-                    <td>
-                        <button ng-click="finalizeOrder()">Kontynuuj</button>
-                    </td>  
-                </tr>  
+               
               </table>
-              
+              <div class="orderBtn">
+                  Razem: {{totalPrice()}}
+                  <button ng-click="finalizeOrder()">Kontynuuj</button>
+              </div>   
           </div>
       </div>          
  

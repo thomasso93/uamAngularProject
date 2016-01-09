@@ -6,23 +6,47 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="script.js"></script>
   </head>
+    
   <body ng-controller="orderController">
-    Zamówienie nr
-       <div data-ng-init="getOrder()">
-   
-        {{orderRes.name}}
+    
+    
+      
+    <div data-ng-init="getOrder()">
+            {{orderRes.name}}
     </div>
-    <div>
 
-    <form name="form1" action="status/:orderId">
-    Numer telefonu: <input type="text" name="phonenumber" require ng-pattern="/^\(?([0-9]{3})\)?[- ]?([0-9]{3})[- ]?([0-9]{3})$/"><br>
-    Ulica: <input type="text" name="street"><br>
-    Uwagi: <input type="text" name="remarks"><br>
-    <input type="submit" value="Złóż zamówienie" ng-click="checkPhoneNumber(form1.phonenumber)">
-    </form>
-    <button class="nav-header" ng-click="doTheBack()">Wstecz!</button>
-</div>
- </div>
+    <div class="orderForm">  
+        <p>Zamówienie nr</p>
+        <form name="form1" action="status/:orderId">
+            <p>
+                <label>
+                    Numer telefonu: 
+                </label>
+                <input class="order" type="text" name="phonenumber" require ng-pattern="/^\(?([0-9]{3})\)?[- ]?([0-9]{3})[- ]?([0-9]{3})$/">
+            </p>
+
+            <p>
+                <label>
+                    Ulica:
+                </label>
+                <input class="order" type="text" name="street">
+            </p>
+
+            <p>
+                <label>
+                    Uwagi: 
+                </label>
+                <input class="order" type="text" name="remarks">
+            </p>
+            <div class="orderBtn">
+                <input type="button" value="Powrót" ng-click="doTheBack()">
+                <input type="submit" value="Złóż zamówienie" ng-click="checkPhoneNumber(form1.phonenumber)">
+            </div>
+        </form>
+    
+        
+
+    </div>
       
 <div class="orderSummary">
 
