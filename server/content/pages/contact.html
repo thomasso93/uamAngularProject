@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/style.css">
     <script src="script.js"></script>
 
+
   </head>
   <body ng-controller="contactController">
     <h1>Adres Pizzeri</h1>
@@ -20,5 +21,14 @@
         Godziny otwarcia: {{contactRes.hours}}<br>
      
     </div>
+    <p>Znajdź nas na mapie!
+    <div id="map"> 
+      <ng-map zoom="18" center="[52.4057858, 16.9291091]">
+      <marker position="[52.4057858, 16.9291091]" />
+      <shape name="circle" radius="4" center="[52.4057858, 16.9291091]" radius="20" />
+      <control name="overviewMap" opened="true" /></ng-map>
+    </div>
+   </p>
   </body>
+
 </html>
