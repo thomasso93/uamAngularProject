@@ -9,11 +9,8 @@
   </head>
     
   <body ng-controller="orderController">
-  <h1>Zamówienie numer  <div data-ng-init="getOrder()">
-            {{orderRes.name}}
-    </div></h1>
+  <h1>Realizacja zamówienia</h1>
     <div class="orderSummary">
-
         <table id="summary">
                     <tr>
                         <th>Nazwa</th>
@@ -27,7 +24,7 @@
                         <td>{{order.price.toFixed(2)}}</td>   
                     </tr>
                     <tr>
-                        <td><b>Razem do zapłaty: {{totalPrice()}}</b></td>
+                        <td><b>Razem do zapłaty: {{totalPrice()}} zł</b></td>
                         <td></td>
                     </tr>  
                     <tr>

@@ -33,10 +33,11 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
         return orders;
     });
 
+
         
     pizzaApp.controller('mainController', function($scope, $http, orders, $location) {
         
-        $scope.orders = orders;
+         $scope.orders = orders;
         
         $scope.totalPrice = function () {
             var total = 0;

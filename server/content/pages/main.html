@@ -34,7 +34,9 @@
                           <input type="number" min="0" max="100" class="menuInput" id="{{pizza}}" name="quantity" ng-model="pizza.quantity">
                     </td>
                     <td class="menu" id="addBtn">
-                        <button class="addBtn" ng-click="addPizzaToBasket(pizza)">Dodaj do koszyka</button>
+                        <div class="addBtn" ng-click="addPizzaToBasket(pizza)">
+                          <img ng-src="http://i.imgur.com/cKD4s3V.jpg/{{hash}}" alt="Dodaj do koszyka"/>
+                    </div>
                     </td>
                 </tr>
             </table>
@@ -43,7 +45,8 @@
 
           <div class="basket">
         
-            <h1>Koszyk</h1>
+            <h1 class="one">Koszyk <img ng-src="http://i.imgur.com/yLHJyjy.png/{{hash}}" alt="Koszyk"/>
+            </h1>
               
               <table id="basket">
                 <tr>
@@ -57,7 +60,9 @@
                     <td>{{order.quantity}}</td>   
                     <td>{{order.price.toFixed(2)}}</td>   
                     <td>
-                        <button class="delete" ng-click="deletePizzaFromBasket(order)">Usuń</button>
+                        <div class="delete" ng-click="deletePizzaFromBasket(order)">
+                          <img ng-src="http://i.imgur.com/eGUtsuw.png/{{hash}}" alt="Usuń z koszyka" />
+                        </div>
                     </td>
                 </tr>
                
@@ -65,8 +70,10 @@
              
               </div>  
         <div class="orderBtn">
-                <h1>  Razem: {{totalPrice()}} 
-                  <button ng-click="finalizeOrder()">Przejdź do kasy</button> </h1>
+                <h1>  Do zapłaty: {{totalPrice()}} zł </h1>
+                    <div  ng-click="finalizeOrder()">
+                        <h2 >Przejdź do kasy<img class="two" ng-src="http://i.imgur.com/gR6NGBU.png/{{hash}}" alt="Przejdź do kasy" /><h2>
+                    </div>
           </div>
       </div>          
  

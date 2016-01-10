@@ -1,3 +1,25 @@
+.one > h1,
+.one > img {
+    position: relative;
+    top: 15px;
+    left: 10px;
+}
+
+.two {
+    position: relative;
+    top: 25px;
+    left: 10px;
+}
+.orderBtn{
+    position: relative;
+    left: 30px;
+}
+
+#map {
+        height: 400px; 
+        width: 400px;      
+}
+
 .main > div{
      display: table-cell;
 }
