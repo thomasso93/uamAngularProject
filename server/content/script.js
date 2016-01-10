@@ -122,10 +122,6 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
         $scope.isInvalid = function(field){
             return $scope.myForm[field].$invalid && $scope.myForm[field].$dirty;
         };
-  
-      
-
-
     });
 
     pizzaApp.controller('statusController', function($scope, $http) {

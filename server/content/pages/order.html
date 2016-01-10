@@ -43,8 +43,9 @@
                 <label>
                     Numer telefonu: 
                 </label>
-                <input type="text" name="phoneNumber" placeholder="Podaj nr telefonu" ng-model="phoneNumber" required/>
-                <span ng-show="isInvalid('phoneNumber')">Numer telefony jest wymagany</span>
+                <input type="text" name="phoneNumber" placeholder="Podaj nr telefonu" ng-model="phoneNumber"  ng-pattern="/^\d{9}|^\d{3}-\d{3}-\d{3}|^\d{3}\s\d{3}\s\d{3}/" required/>
+                <span ng-show="isInvalid('phoneNumber')">Numer telefonu jest wymagany</span>
+                <span ng-show="myForm.price_field.$error.pattern"></span>
 
         </div>
                <div ng-class="{error: isInvalid('street')}">
@@ -53,6 +54,7 @@
                 </label>
                 <input type="text" placeholder="Podaj adres" name="street" ng-model="street" required>
                 <span ng-show="isInvalid('street')">Dodanie adresu jest wymagane</span>
+
            </div>
 
             <div>
