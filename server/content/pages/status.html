@@ -2,12 +2,12 @@
   <head>
     <meta charset="utf-8">
     <title>Stan zamówienia</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="script.js"></script>
   </head>
   <body ng-controller="statusController">
-    Stan zamównia nr
+    <h1>Stan zamówienia nr
        <div data-ng-init="getStatus()">
    
         {{statusRes.id}}
@@ -15,6 +15,6 @@
   
     </div>
 
- 
+ </h1>
   </body>
 </html>

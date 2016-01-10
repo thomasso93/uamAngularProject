@@ -135,5 +135,20 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute']);
                 $scope.statusRes = res;
             });
         };
+
+        $scope.initMap = function() {
+          var myLatLng = {lat: 52.4057858, lng: 16.928221};
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: myLatLng
+          });
+
+          var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Pizzera Zbyszek!'
+          });
+        }
          
     });

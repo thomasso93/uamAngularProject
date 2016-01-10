@@ -1,4 +1,4 @@
-<html ng-app="pizzaApp">
+<html class="active" ng-app="pizzaApp">
   <head>
     <meta charset="utf-8">
     <title>Zamówienia</title>
@@ -9,22 +9,42 @@
   </head>
     
   <body ng-controller="orderController">
-    
-    
-      
-    <div data-ng-init="getOrder()">
+  <h1>Zamówienie numer  <div data-ng-init="getOrder()">
             {{orderRes.name}}
-    </div>
+    </div></h1>
+    <div class="orderSummary">
 
+        <table id="summary">
+                    <tr>
+                        <th>Nazwa</th>
+                        <th>Ilość</th>
+                        <th>Cena</th>
+                 
+                    </tr>
+                    <tr ng-repeat="order in orders">
+                        <td>{{order.name}}</td>   
+                        <td>{{order.quantity}}</td>   
+                        <td>{{order.price.toFixed(2)}}</td>   
+                    </tr>
+                    <tr>
+                        <td><b>Razem do zapłaty: {{totalPrice()}}</b></td>
+                        <td></td>
+                    </tr>  
+                    <tr>
+                    </tr>
+                    </table>
+
+    </div>
+    
     <div class="orderForm">  
-        <p>Zamówienie nr</p>
+        <p>Wypełnij dane potrzebne do zamówienia</p>
         <form name="myForm" action="status/:orderId">
           <div ng-class="{error: isInvalid('phoneNumber')}">
                 <label>
                     Numer telefonu: 
                 </label>
                 <input type="text" name="phoneNumber" placeholder="Podaj nr telefonu" ng-model="phoneNumber" required/>
-                <span ng-show="isInvalid('phoneNumber')">phoneNumber is required</span>
+                <span ng-show="isInvalid('phoneNumber')">Numer telefony jest wymagany</span>
 
         </div>
                <div ng-class="{error: isInvalid('street')}">
@@ -32,14 +52,14 @@
                     Ulica:
                 </label>
                 <input type="text" placeholder="Podaj adres" name="street" ng-model="street" required>
-                <span ng-show="isInvalid('street')">street is required</span>
+                <span ng-show="isInvalid('street')">Dodanie adresu jest wymagane</span>
            </div>
 
             <div>
                 <label>
                     Uwagi: 
                 </label>
-                <input class="order" type="text" name="remarks">
+                <input class="order" placeholder="Dodatkowe informacje" type="text" name="remarks">
             
             <div class="orderBtn">
                 <input type="button" value="Powrót" ng-click="doTheBack()">
@@ -51,27 +71,7 @@
     
     </div>
       
-    <div class="orderSummary">
-
-        <table id="summary">
-                    <tr>
-                        <th>Nazwa</th>
-                        <th>Ilość</th>
-                        <th>Cena</th>
-                        <th></th>
-                    </tr>
-                    <tr ng-repeat="order in orders">
-                        <td>{{order.name}}</td>   
-                        <td>{{order.quantity}}</td>   
-                        <td>{{order.price.toFixed(2)}}</td>   
-                    </tr>
-                    <tr>
-                        <td>Razem: {{totalPrice()}}</td>
-                        <td></td>
-                    </tr>  
-                    <tr>
-
-    </div>
+    
       
 </body>
 </html>

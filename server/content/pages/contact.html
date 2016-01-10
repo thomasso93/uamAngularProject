@@ -2,22 +2,25 @@
   <head>
     <meta charset="utf-8">
     <title>Pizzeria</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
     <script src="script.js"></script>
+
   </head>
   <body ng-controller="contactController">
-    <h2>Adres pizzeri</h2>
+    <h1>Adres Pizzeri</h1>
   
       <div data-ng-init="getContact()">
    
-        <h2>{{contactRes.name}}</h2><br>
-        {{contactRes.address.street}}<br>
-        {{contactRes.address.city}}<br>
-        {{contactRes.phone}}<br>
-        {{contactRes.hours}}<br>
+        <h2>{{contactRes.name}} Zbyszek</h2><br>
+        Ulica: {{contactRes.address.street}}<br>
+        Miasto: {{contactRes.address.city}}<br>
+        Telefon kontaktowy: {{contactRes.phone}}<br>
+        Godziny otwarcia: {{contactRes.hours}}<br>
      
     </div>
+
 
  
   </body>

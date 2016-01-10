@@ -8,10 +8,10 @@
     <script src="script.js"></script>
   </head>
   <body ng-controller="mainController">
-      
+     
       <div class="main">
           <div class="menu" data-ng-init="getMenu()">
-
+    
             <h1>Menu:</h1>  
             <table id="menu">
                 <tr>
@@ -34,14 +34,15 @@
                           <input type="number" min="0" max="100" class="menuInput" id="{{pizza}}" name="quantity" ng-model="pizza.quantity">
                     </td>
                     <td class="menu" id="addBtn">
-                        <button class="addBtn" ng-click="addPizzaToBasket(pizza)">+</button>
+                        <button class="addBtn" ng-click="addPizzaToBasket(pizza)">Dodaj do koszyka</button>
                     </td>
                 </tr>
             </table>
-
+        
           </div>
 
           <div class="basket">
+        
             <h1>Koszyk</h1>
               
               <table id="basket">
@@ -56,15 +57,16 @@
                     <td>{{order.quantity}}</td>   
                     <td>{{order.price.toFixed(2)}}</td>   
                     <td>
-                        <button class="delete" ng-click="deletePizzaFromBasket(order)">X</button>
+                        <button class="delete" ng-click="deletePizzaFromBasket(order)">Usuń</button>
                     </td>
                 </tr>
                
               </table>
-              <div class="orderBtn">
-                  Razem: {{totalPrice()}}
-                  <button ng-click="finalizeOrder()">Kontynuuj</button>
-              </div>   
+             
+              </div>  
+        <div class="orderBtn">
+                <h1>  Razem: {{totalPrice()}} 
+                  <button ng-click="finalizeOrder()">Przejdź do kasy</button> </h1>
           </div>
       </div>          
  
