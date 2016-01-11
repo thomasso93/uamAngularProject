@@ -112,7 +112,6 @@ app.get('/order/:id', function (req, res) {
             res.status(404).send('Order does not exist.');
         } else {
             res.json(orders[req.params.id]);
-            console.log(req.params.id);
         }
     }, _.random(100, 1500));
 });

@@ -118,11 +118,13 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap']);
               data    : $scope.orders, 
               headers : {'Content-Type': 'application/json'} 
              }).success(function (data, status) {
-                    $scope.orderId = data.id;
+                    $location.path('/order/'+data.id);
                 }).error(function (data, status) {
                     $scope.orderId = 'Request failed';
                     $scope.orderStatus = status;
                 });
+            
+            
         };
                 
         $scope.getContact = function () {
@@ -139,11 +141,6 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap']);
             return $scope.myForm[field].$invalid && $scope.myForm[field].$dirty;
         };
         
-        $scope.checkStatus = function () {
-            $location.path('/order/'+$scope.orderId);
-        }
-        
-        
     });
 
     pizzaApp.controller('statusController', function($scope, $http, $routeParams) {
@@ -155,28 +152,5 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap']);
                 $scope.status = res;
             });     
         };
-                
-        $scope.getContact = function () {
-            $http.get('/status').success(function (res) {
-                $scope.statusRes = res;
-            });
-        };
-
-        
-        //TODO - wyjebać to 
-        $scope.initMap = function() {
-          var myLatLng = {lat: 52.4057858, lng: 16.928221};
-
-          var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 16,
-            center: myLatLng
-          });
-
-          var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: 'Pizzera Zbyszek!'
-          });
-        }
-         
+                     
     });

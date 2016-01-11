@@ -7,13 +7,48 @@
     <script src="script.js"></script>
   </head>
   <body ng-controller="statusController">
-    <h1>Stan zamówienia nr
+      
+    <div data-ng-init="getOrderStatus()">
+      <h1>Stan zamówienia nr {{orderId}}
          
-        {{getOrderStatus()}}
+          <table>
+                <tr>
+                    <th>Zamówiono</th>
+                    <th>Przewidywany czas dostarczenia</th>
+                </tr>
+
+                <tr>
+                    <td>  {{ status.ordered }} </td>
+                    <td> {{ status.estimated}} </td>
+                </tr>
+            </table>
+          
+          <h1>Zamówienie:</h1>  
+            <table>
+                <tr>
+                    <th>Nr</th>
+                    <th>Nazwa</th>
+                    <th>Składniki</th>
+                    <th>Cena</th>
+                    <th>Ilość</th>
+                </tr>
+
+                <tr ng-repeat="pizza in status.order">
+                    <td class="menu" id="pizzaId">  {{ pizza.pizza.id }} </td>
+                    <td class="menu"> {{ pizza.pizza.name}} </td>
+                    <td class="menu">
+                        <option ng-repeat="ingredient in pizza.pizza.ingredients" value="{{ingredient}}">{{ingredient}}</option>
+                    </td>
+                    <td class="menu"> {{ pizza.pizza.price.toFixed(2)}} </td>
+                    <td class="menu"> {{ pizza.quantity}} </td>
+                </tr>
+            </table>
+
+    </div>  
+      
+    
         
-        {{status}}
         
-        {{orderId}}
 
  </h1>
   </body>
