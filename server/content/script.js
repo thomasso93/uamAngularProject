@@ -65,10 +65,12 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap']);
                 order.quantity = 1;
             } 
             else {
-                order.quantity = pizza.quantity;
+                order.quantity = parseFloat(pizza.quantity);
             }
             
-            order.price = pizza.price * order.quantity;
+            order.price = parseFloat(pizza.price * order.quantity);
+            
+            order.id = pizza.id;
     
             if (order.price != 0) {
                 $scope.orders.push(order);
@@ -109,7 +111,28 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap']);
     pizzaApp.controller('orderController', function($scope, $http, orders) {
         
         $scope.orders = orders;
-   
+        
+        $scope.sendOrder = function () {
+            $http({
+              method  : 'POST',
+              url     : '/order',
+              data    : $scope.orders, 
+              headers : {'Content-Type': 'application/json'} 
+             }).success(function (data, status) {
+                    $scope.orderId = data.id;
+                }).error(function (data, status) {
+                    $scope.orderId = 'Request failed';
+                    $scope.orderStatus = status;
+                });
+        };
+        
+        $scope.isOrderArray = $scope.orders instanceof Array;
+        
+        $scope.isQNumber = typeof $scope.orders[0].quantity;
+        
+        $scope.isQMore = $scope.orders[0].quantity > 0;
+        
+        
         $scope.getContact = function () {
             $http.get('/order').success(function (res) {
                 $scope.orderRes = res;

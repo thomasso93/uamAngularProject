@@ -35,7 +35,7 @@
     
     <div class="orderForm">  
         <p>Wypełnij dane potrzebne do zamówienia</p>
-        <form name="myForm" action="status/:orderId">
+        <form name="myForm">
           <div ng-class="{error: isInvalid('phoneNumber')}">
                 <label>
                     Numer telefonu: 
@@ -62,7 +62,7 @@
             
             <div class="orderBtn">
                 <input type="button" value="Powrót" ng-click="doTheBack()">
-                <button ng-disabled="myForm.$invalid">Zatwierdź</button>
+                <button ng-disabled="myForm.$invalid" ng-click="sendOrder()">Zatwierdź</button>
              </div> 
             </div>
         </form>
@@ -70,6 +70,17 @@
     
     </div>
       
+      <div>
+        zwrocone id: {{orderId}}
+          <br>
+        status: {{orderStatus}}
+        <br>
+          jest tablica: {{isOrderArray}}
+        <br>
+          walidacja: {{isQNumber}}
+        <br>
+          wieksze: {{isQMore}}
+      </div>
     
       
 </body>
