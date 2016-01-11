@@ -14,7 +14,7 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap']);
                     templateUrl: 'pages/order.html',
                     controller: 'orderController'
                 }).
-                when('/status', {
+                when('/order/:id', {
                     templateUrl: 'pages/status.html',
                     controller: 'statusController'
                 }).
@@ -33,11 +33,10 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap']);
         return orders;
     });
 
-
         
     pizzaApp.controller('mainController', function($scope, $http, orders, $location) {
         
-         $scope.orders = orders;
+        $scope.orders = orders;
         
         $scope.totalPrice = function () {
             var total = 0;
@@ -108,7 +107,7 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap']);
          
     });
 
-    pizzaApp.controller('orderController', function($scope, $http, orders) {
+    pizzaApp.controller('orderController', function($scope, $http, orders, $location) {
         
         $scope.orders = orders;
         
@@ -125,14 +124,7 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap']);
                     $scope.orderStatus = status;
                 });
         };
-        
-        $scope.isOrderArray = $scope.orders instanceof Array;
-        
-        $scope.isQNumber = typeof $scope.orders[0].quantity;
-        
-        $scope.isQMore = $scope.orders[0].quantity > 0;
-        
-        
+                
         $scope.getContact = function () {
             $http.get('/order').success(function (res) {
                 $scope.orderRes = res;
@@ -146,16 +138,32 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap']);
         $scope.isInvalid = function(field){
             return $scope.myForm[field].$invalid && $scope.myForm[field].$dirty;
         };
+        
+        $scope.checkStatus = function () {
+            $location.path('/order/'+$scope.orderId);
+        }
+        
+        
     });
 
-    pizzaApp.controller('statusController', function($scope, $http) {
+    pizzaApp.controller('statusController', function($scope, $http, $routeParams) {
         
+        $scope.orderId = $routeParams.id;
+        
+        $scope.getOrderStatus = function () {
+            $http.get('/order/' + $scope.orderId).success(function (res) {
+                $scope.status = res;
+            });     
+        };
+                
         $scope.getContact = function () {
             $http.get('/status').success(function (res) {
                 $scope.statusRes = res;
             });
         };
 
+        
+        //TODO - wyjebać to 
         $scope.initMap = function() {
           var myLatLng = {lat: 52.4057858, lng: 16.928221};
 

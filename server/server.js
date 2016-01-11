@@ -69,13 +69,9 @@ function checkIsOrderValid(order) {
                 isValidPizza = _.isNumber(position.id) && !_.isEmpty(_.find(menu, {
                     id: position.id
                 }));
-            console.log('isQualityValid', isQuantityValid);
-            console.log('isValidPizza', isValidPizza);
             return isQuantityValid && isValidPizza;
         });
 
-    console.log('isArray', isArray);
-    console.log('areItemsValid', areItemsValid);
     return isArray && areItemsValid;
     
 }
@@ -84,7 +80,6 @@ app.post('/order', function (req, res) {
     setTimeout(function () {
         console.log('Order recived', req.body);
         if (checkIsOrderValid(req.body)) {
-            console.log('valid order');
             var now = Date.now();
             
             orders[i] = {
@@ -106,7 +101,6 @@ app.post('/order', function (req, res) {
 
             i++;
         } else {
-            console.log('INVALID order');
             res.status(500).send('Invalid order.');
         }
     }, _.random(100, 1500));
@@ -118,6 +112,7 @@ app.get('/order/:id', function (req, res) {
             res.status(404).send('Order does not exist.');
         } else {
             res.json(orders[req.params.id]);
+            console.log(req.params.id);
         }
     }, _.random(100, 1500));
 });

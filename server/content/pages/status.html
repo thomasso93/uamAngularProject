@@ -8,12 +8,12 @@
   </head>
   <body ng-controller="statusController">
     <h1>Stan zamówienia nr
-       <div data-ng-init="getStatus()">
-   
-        {{statusRes.id}}
-        {{statusRes.quantity}}
-  
-    </div>
+         
+        {{getOrderStatus()}}
+        
+        {{status}}
+        
+        {{orderId}}
 
  </h1>
   </body>
