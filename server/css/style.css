@@ -85,3 +85,13 @@ th {
     background-color: #4CAF50;
     color: white;
 }
+
+body {
+  text-align: center;
+ }
+
+.mainContent {
+  text-align: left;
+  width: 800px;
+  margin: 0 auto;
+}
