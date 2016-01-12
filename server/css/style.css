@@ -101,5 +101,13 @@ input[type="number"] {
 }
 #remarks{
     position: relative;
-    left: 84px;
+    left: 85px;
+}
+#message1{
+    position: relative;
+    left: 30px;
+}
+#message2{
+    position: relative;
+    left: 104px;
 }
