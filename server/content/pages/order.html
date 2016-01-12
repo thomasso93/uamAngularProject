@@ -44,15 +44,14 @@
                 <span ng-show="isInvalid('phoneNumber')">Numer telefonu jest wymagany</span>
                 <span ng-show="myForm.price_field.$error.pattern"></span>
 
-        </div>
-               <div ng-class="{error: isInvalid('street')}">
+            </div>
+            <div ng-class="{error: isInvalid('street')}">
                 <label>
                     Ulica:
                 </label>
                 <input type="text" placeholder="Podaj adres" name="street" ng-model="street" required>
                 <span ng-show="isInvalid('street')">Dodanie adresu jest wymagane</span>
-
-           </div>
+            </div>
 
             <div>
                 <label>
@@ -66,10 +65,11 @@
              </div> 
             </div>
         </form>
-    
-    
     </div>
     
+    <div>
+        {{ orderId }}
+    </div>
       
 </body>
 </html>
