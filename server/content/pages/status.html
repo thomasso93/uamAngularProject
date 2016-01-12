@@ -18,8 +18,8 @@
                 </tr>
 
                 <tr>
-                    <td>  {{ status.ordered }} </td>
-                    <td> {{ status.estimated}} </td>
+                    <td>  {{ status.ordered | date:'dd-MM-yyyy HH:mm'}} </td>
+                    <td> {{ status.estimated | date:'dd-MM-yyyy HH:mm'}} </td>
                 </tr>
             </table>
           

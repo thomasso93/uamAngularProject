@@ -24,7 +24,7 @@
      display: table-cell;
 }
 .navi{
-    background-color: #006600;
+    background-color: #4CAF50;
 }
 
 body{
@@ -42,10 +42,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #006600;
-    text-align: left;
-    width: 800px;
-    margin: 0 auto;
+    background-color: #4CAF50;
 }
 
 li {
@@ -61,7 +58,7 @@ li a {
 }
 
 li a:hover:not(.active) {
-    background-color: #4CAF30;
+    background-color: #111;
 }
 
 
@@ -85,16 +82,6 @@ th, td {
 tr:nth-child(even){background-color: #f2f2f2}
 
 th {
-    background-color: #006600;
+    background-color: #4CAF50;
     color: white;
-}
-
-body {
-  text-align: center;
- }
-
-.mainContent {
-  text-align: left;
-  width: 800px;
-  margin: 0 auto;
 }
