@@ -122,9 +122,7 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap']);
                 }).error(function (data, status) {
                     $scope.orderId = 'Request failed';
                     $scope.orderStatus = status;
-                });
-            
-            
+                });         
         };
                 
         $scope.getContact = function () {

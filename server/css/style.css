@@ -85,3 +85,21 @@ th {
     background-color: #4CAF50;
     color: white;
 }
+
+input[type="number"] {
+   width:80px;
+}
+
+#phone{
+    position: relative;
+    left: 20px;
+}
+
+#street{
+    position: relative;
+    left: 94px;
+}
+#remarks{
+    position: relative;
+    left: 84px;
+}
