@@ -1,28 +1,17 @@
 <html ng-app="pizzaApp">
-  <head>
-    <meta charset="utf-8">
-    <title>Stan zamówienia</title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script src="script.js"></script>
-  </head>
-  <body ng-controller="statusController">
-      
+<body ng-controller="statusController">
     <div data-ng-init="getOrderStatus()">
-      <h1>Stan zamówienia nr {{orderId}}
-         
-          <table>
-                <tr>
-                    <th>Zamówiono</th>
-                    <th>Przewidywany czas dostarczenia</th>
-                </tr>
-
-                <tr>
-                    <td>  {{ status.ordered | date:'dd-MM-yyyy HH:m'}} </td>
-                    <td> {{ status.estimated | date:'dd-MM-yyyy HH:m'}} </td>
-                </tr>
-            </table>
-          
+      <h1>Stan zamówienia nr {{orderId}} 
+        <table>
+            <tr>
+                <th>Zamówiono</th>
+                <th>Przewidywany czas dostarczenia</th>
+            </tr>
+            <tr>
+                    <td>{{ status.ordered | date:'dd-MM-yyyy HH:mm'}}</td>
+                    <td>{{ status.estimated | date:'dd-MM-yyyy HH:mm'}}</td>
+            </tr>
+        </table>
           <h1>Zamówienie:</h1>  
             <table>
                 <tr>
@@ -32,7 +21,6 @@
                     <th>Cena</th>
                     <th>Ilość</th>
                 </tr>
-
                 <tr ng-repeat="pizza in status.order">
                     <td class="menu" id="pizzaId">  {{ pizza.pizza.id }} </td>
                     <td class="menu"> {{ pizza.pizza.name}} </td>
@@ -43,13 +31,6 @@
                     <td class="menu"> {{ pizza.quantity}} </td>
                 </tr>
             </table>
-
     </div>  
-      
-    
-        
-        
-
- </h1>
-  </body>
+</body>
 </html>

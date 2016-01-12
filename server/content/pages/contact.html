@@ -1,40 +1,20 @@
 <html ng-app="pizzaApp">
-  <head>
-    <meta charset="utf-8">
-    <title>Pizzeria</title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <script src="script.js"></script>
-
-
-  </head>
-  <body ng-controller="contactController">
-    <h1>Adres Pizzeri</h1>
-  
-      <div data-ng-init="getContact()">
-        <h2>
-            {{contactRes.name}} Zbyszek
-        </h2>
-        <br>
-        Ulica: {{contactRes.address.street}}
-        <br>
-        Miasto: {{contactRes.address.city}}
-        <br>
-        Telefon kontaktowy: {{contactRes.phone}}
-        <br>
-        Godziny otwarcia: {{contactRes.hours}}
-        <br>
-     
+<body ng-controller="contactController">
+  <h1>Adres Pizzeri</h1>
+    <div data-ng-init="getContact()">
+      <h2>{{contactRes.name}} Zbyszek</h2>
+      <br>Ulica: {{contactRes.address.street}}
+      <br>Miasto: {{contactRes.address.city}}
+      <br>Telefon kontaktowy: {{contactRes.phone}}
+      <br>Godziny otwarcia: {{contactRes.hours}}<br> 
     </div>
     <p>Znajdź nas na mapie!
-    <div id="map"> 
-      <ng-map zoom="18" center="[52.4057858, 16.9291091]">
-      <marker position="[52.4057858, 16.9291091]" />
-      <shape name="circle" radius="4" center="[52.4057858, 16.9291091]" radius="20" />
-      <control name="overviewMap" opened="true" /></ng-map>
-    </div>
+      <div id="map"> 
+        <ng-map zoom="18" center="[52.4057858, 16.9291091]">
+        <marker position="[52.4057858, 16.9291091]" />
+        <shape name="circle" radius="4" center="[52.4057858, 16.9291091]" radius="20" />
+        <control name="overviewMap" opened="true" /></ng-map>
+      </div>
    </p>
-  </body>
-
+</body>
 </html>

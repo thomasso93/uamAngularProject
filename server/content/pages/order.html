@@ -1,22 +1,12 @@
 <html class="active" ng-app="pizzaApp">
-  <head>
-    <meta charset="utf-8">
-    <title>Zamówienia</title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script src="https://code.angularjs.org/1.4.8/angular-messages.min.js"></script>
-    <script src="script.js"></script>
-  </head>
-    
-  <body ng-controller="orderController">
-  <h1>Realizacja zamówienia</h1>
-    <div class="orderSummary">
-        <table id="summary">
+<body ng-controller="orderController">
+    <h1>Realizacja zamówienia</h1>
+        <div class="orderSummary">
+            <table id="summary">
                     <tr>
                         <th>Nazwa</th>
                         <th>Ilość</th>
                         <th>Cena</th>
-                 
                     </tr>
                     <tr ng-repeat="order in orders">
                         <td>{{order.name}}</td>   
@@ -27,23 +17,19 @@
                         <td><b>Razem do zapłaty: {{totalPrice()}} zł</b></td>
                         <td></td>
                     </tr>  
-                    <tr>
-                    </tr>
-                    </table>
-
-    </div>
-    
+                    <tr></tr>
+            </table>
+        </div>
     <div class="orderForm">  
         <p>Wypełnij dane potrzebne do zamówienia</p>
         <form name="myForm">
-          <div ng-class="{error: isInvalid('phoneNumber')}">
+            <div ng-class="{error: isInvalid('phoneNumber')}">
                 <label>
                     Numer telefonu: 
                 </label>
                 <input type="text" name="phoneNumber" placeholder="Podaj nr telefonu" ng-model="phoneNumber"  ng-pattern="/^\d{9}|^\d{3}-\d{3}-\d{3}|^\d{3}\s\d{3}\s\d{3}/" required/>
                 <span ng-show="isInvalid('phoneNumber')">Numer telefonu jest wymagany</span>
                 <span ng-show="myForm.price_field.$error.pattern"></span>
-
             </div>
             <div ng-class="{error: isInvalid('street')}">
                 <label>
@@ -52,13 +38,11 @@
                 <input type="text" placeholder="Podaj adres" name="street" ng-model="street" required>
                 <span ng-show="isInvalid('street')">Dodanie adresu jest wymagane</span>
             </div>
-
             <div>
                 <label>
                     Uwagi: 
                 </label>
                 <input class="order" placeholder="Dodatkowe informacje" type="text" name="remarks">
-            
             <div class="orderBtn">
                 <input type="button" value="Powrót" ng-click="doTheBack()">
                 <button ng-disabled="myForm.$invalid" ng-click="sendOrder()">Zatwierdź</button>
@@ -66,10 +50,6 @@
             </div>
         </form>
     </div>
-    
-    <div>
-        {{ orderId }}
-    </div>
-      
+    <div>{{ orderId }}</div>
 </body>
 </html>

@@ -1,81 +1,62 @@
 <html ng-app="pizzaApp">
-  <head>
-    <meta charset="utf-8">
-    <title>Pizzeria</title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
-    <script src="script.js"></script>
-  </head>
-  <body ng-controller="mainController">
-     
-      <div class="main">
-          <div class="menu" data-ng-init="getMenu()">
-    
-            <h1>Menu:</h1>  
-            <table id="menu">
-                <tr>
-                    <th>Nr</th>
-                    <th>Nazwa</th>
-                    <th>Składniki</th>
-                    <th>Cena</th>
-                    <th>Ilość</th>
-                    <th></th>
-                </tr>
-
-                <tr ng-repeat="pizza in menuRes">
-                    <td class="menu" id="pizzaId">  {{ pizza.id }} </td>
-                    <td class="menu"> {{ pizza.name}} </td>
-                    <td class="menu">
-                        <option ng-repeat="ingredient in pizza.ingredients" value="{{ingredient}}">{{ingredient}}</option>
-                    </td>
-                    <td class="menu"> {{ pizza.price.toFixed(2)}} </td>
-                    <td class="menu">
-                          <input type="number" min="0" max="100" class="menuInput" id="{{pizza}}" name="quantity" ng-model="pizza.quantity">
-                    </td>
-                    <td class="menu" id="addBtn">
-                        <div class="addBtn" ng-click="addPizzaToBasket(pizza)">
-                          <img ng-src="http://i.imgur.com/cKD4s3V.jpg/{{hash}}" alt="Dodaj do koszyka"/>
-                    </div>
-                    </td>
-                </tr>
-            </table>
-        
-          </div>
-
-          <div class="basket">
-        
-            <h1 class="one">Koszyk <img ng-src="http://i.imgur.com/yLHJyjy.png/{{hash}}" alt="Koszyk"/>
-            </h1>
-              
-              <table id="basket">
-                <tr>
-                    <th>Nazwa</th>
-                    <th>Ilość</th>
-                    <th>Cena</th>
-                    <th></th>
-                </tr>
-                <tr ng-repeat="order in orders">
-                    <td>{{order.name}}</td>   
-                    <td>{{order.quantity}}</td>   
-                    <td>{{order.price.toFixed(2)}}</td>   
-                    <td>
-                        <div class="delete" ng-click="deletePizzaFromBasket(order)">
-                          <img ng-src="http://i.imgur.com/eGUtsuw.png/{{hash}}" alt="Usuń z koszyka" />
-                        </div>
-                    </td>
-                </tr>
-               
-              </table>
-             
-              </div>  
-        <div class="orderBtn">
-                <h1>  Do zapłaty: {{totalPrice()}} zł </h1>
-                    <div  ng-click="finalizeOrder()">
-                        <h2 >Przejdź do kasy<img class="two" ng-src="http://i.imgur.com/gR6NGBU.png/{{hash}}" alt="Przejdź do kasy" /><h2>
-                    </div>
-          </div>
-      </div>          
- 
-  </body>
+<body ng-controller="mainController">   
+  <div class="main">
+    <div class="menu" data-ng-init="getMenu()">
+      <h1>Menu:</h1>  
+        <table id="menu">
+          <tr>
+            <th>Nr</th>
+            <th>Nazwa</th>
+            <th>Składniki</th>
+            <th>Cena</th>
+            <th>Ilość</th>
+            <th></th>
+          </tr>
+          <tr ng-repeat="pizza in menuRes">
+            <td class="menu" id="pizzaId">  {{ pizza.id }} </td>
+            <td class="menu"> {{ pizza.name}} </td>
+            <td class="menu">
+              <option ng-repeat="ingredient in pizza.ingredients" value="{{ingredient}}">{{ingredient}}</option>
+            </td>
+            <td class="menu"> {{ pizza.price.toFixed(2)}} </td>
+            <td class="menu">
+              <input type="number" min="0" max="100" class="menuInput" id="{{pizza}}" name="quantity" ng-model="pizza.quantity">
+            </td>
+            <td class="menu" id="addBtn">
+                <div class="addBtn" ng-click="addPizzaToBasket(pizza)">
+                  <img ng-src="http://i.imgur.com/cKD4s3V.jpg/{{hash}}" alt="Dodaj do koszyka"/>
+                </div>
+            </td>
+          </tr>
+        </table>
+    </div>
+    <div class="basket">
+      <h1 class="one">Koszyk <img ng-src="http://i.imgur.com/yLHJyjy.png/{{hash}}" alt="Koszyk"/></h1>
+        <table id="basket">
+          <tr>
+            <th>Nazwa</th>
+            <th>Ilość</th>
+            <th>Cena</th>
+            <th></th>
+          </tr>
+          <tr ng-repeat="order in orders">
+            <td>{{order.name}}</td>   
+            <td>{{order.quantity}}</td>   
+            <td>{{order.price.toFixed(2)}}</td>   
+            <td>
+              <div class="delete" ng-click="deletePizzaFromBasket(order)">
+                <img ng-src="http://i.imgur.com/eGUtsuw.png/{{hash}}" alt="Usuń z koszyka" />
+              </div>
+            </td>
+          </tr>
+        </table>
+    </div>  
+    <div class="orderBtn">
+      <h1>Do zapłaty: {{totalPrice()}} zł</h1>
+        <div ng-click="finalizeOrder()">
+          <h2>Przejdź do kasy<img class="two" ng-src="http://i.imgur.com/gR6NGBU.png/{{hash}}" alt="Przejdź do kasy"/><h2>
+        </div>
+    </div>
+  </div>          
+</body>
 </html>
