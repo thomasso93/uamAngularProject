@@ -14,7 +14,7 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap']);
                     templateUrl: 'pages/order.html',
                     controller: 'orderController'
                 }).
-                when('/order/:id', {
+                when('/status/:id', {
                     templateUrl: 'pages/status.html',
                     controller: 'statusController'
                 }).
@@ -118,7 +118,7 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap']);
               data    : $scope.orders, 
               headers : {'Content-Type': 'application/json'} 
              }).success(function (data, status) {
-                    $location.path('/order/'+data.id);
+                    $location.path('/status/'+data.id);
                 }).error(function (data, status) {
                     $scope.orderId = 'Request failed';
                     $scope.orderStatus = status;
