@@ -41,7 +41,9 @@
           </tr>
           <tr ng-repeat="order in orders">
             <td>{{order.name}}</td>   
-            <td>{{order.quantity}}</td>   
+            <td>
+                <input type="number" min="0" max="100" ng-model="order.quantity">
+            </td>   
             <td>{{order.price.toFixed(2)}}</td>   
             <td>
               <div class="delete" ng-click="deletePizzaFromBasket(order)">
