@@ -25,7 +25,7 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
             }
             
             for (var i=0; i < $scope.orders.length; i++) {
-                if ($scope.menuRes[i].id === order.id) {
+                if ($scope.orders[i].id === order.id) {
                     $scope.orders[i].price = price * $scope.orders[i].quantity; 
                 }
             }
