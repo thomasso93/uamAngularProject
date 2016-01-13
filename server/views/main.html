@@ -42,7 +42,7 @@
           <tr ng-repeat="order in orders">
             <td>{{order.name}}</td>   
             <td>
-                <input type="number" min="0" max="100" ng-model="order.quantity">
+                <input type="number" min="0" max="100" ng-model="order.quantity" ng-change="refresh(order)">
             </td>   
             <td>{{order.price.toFixed(2)}}</td>   
             <td>

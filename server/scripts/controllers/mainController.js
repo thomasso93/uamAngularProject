@@ -5,7 +5,7 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
         });
         
         $scope.orders = orders;
-        
+    
         $scope.totalPrice = function () {
             var total = 0;
       
@@ -14,8 +14,25 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
                 total += price; 
             }
             return total.toFixed(2);
-        }; 
+        };
+    
+        $scope.updatePrice = function (order) {
+            var price = 0;
+            for (var i=0; i< $scope.menuRes.length; i++) {
+                if ($scope.menuRes[i].id === order.id) {
+                    price = $scope.menuRes[i].price;
+                }
+            }
+            
+            for (var i=0; i < $scope.orders.length; i++) {
+                $scope.orders[i].price = price * $scope.orders[i].quantity;
+            }
+        };
         
+        $scope.refresh = function (order) {
+            $scope.updatePrice(order);
+            $scope.totalPrice();
+        };
      
         $scope.addPizzaToBasket = function (pizza) {        
             var order = {};
@@ -43,13 +60,14 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
             var index = 0;         
  
             for (var i = 0; i < $scope.orders.length; i++){
-                if (order.name === $scope.orders[i].name ) {
+                if ((order.name === $scope.orders[i].name) && (order.price === $scope.orders[i].price) ) {
                     index = i;
                     break;
                 }    
               }  
     
             $scope.orders.splice(index, 1);
+             
         };
 
          $scope.finalizeOrder = function () {
