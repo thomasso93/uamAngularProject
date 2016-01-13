@@ -45,7 +45,6 @@ gulp.task('js-fef', function(){
     return gulp.src(['./scripts/controllers/*.js'])
 	    .pipe(jshint())
 	    .pipe(jshint.reporter('default'))
-	    .pipe(jshint.reporter('fail'))
         .pipe(gp_concat('concat.js'))
         .pipe(gulp.dest('./build/scripts/controllers'))
         .pipe(gp_rename('uglify.js'))

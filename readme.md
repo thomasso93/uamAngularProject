@@ -55,6 +55,7 @@
  * do not push vendors to the repo
 * We assume that commands git clone /repo/, npm install, gulp build:prod and node server/server.js will start project on localhost:8080
  * if you changed the process let us know in readme!
+ *note:after gulp build:prod please use command gulp index2
 * Dedicated repo for project (don't do project in forks of the lesson materials).
 * Best practices:
  * angular modules, components, directives
