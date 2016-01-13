@@ -40,27 +40,40 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
                 }
             }
         };
+    
+        $scope.findOrder = function (order) {
+            var orders = $scope.orders;
+            var index = -1;
+            for (var i=0; i < orders.length; i++) {
+                if ( (orders[i].id === order.id) && (orders[i].name == order.name) ) {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        };
+    
+        $scope.addNewOrder = function (order) {
+            if (order.price != 0) {
+                var index = $scope.findOrder(order); 
+                if (index != -1) {
+                    $scope.orders[index].quantity += order.quantity;
+                    $scope.updatePrice($scope.orders[index]);
+                }
+                else
+                    $scope.orders.push(order);
+            }
+        };
      
         $scope.addPizzaToBasket = function (pizza) {        
             var order = {};
         
             order.name = pizza.name;
-           
-            if (typeof pizza.quantity === 'undefined') {
-                order.quantity = 1;
-            } 
-            else {
-                order.quantity = parseFloat(pizza.quantity);
-            }
-            
+            order.id = pizza.id;
+            order.quantity = (typeof pizza.quantity === 'undefined') ? 1 : parseFloat(pizza.quantity);
             order.price = parseFloat(pizza.price * order.quantity);
             
-            order.id = pizza.id;
-    
-            if (order.price != 0) {
-                $scope.orders.push(order);
-            }
-
+            $scope.addNewOrder(order);
         };
 
          $scope.deletePizzaFromBasket = function (order) {  
