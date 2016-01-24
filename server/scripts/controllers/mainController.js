@@ -10,7 +10,7 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
            $scope.ingredientsCategory = data.data;
         });
     
-        $scope.clickToOpen = function () {
+        $scope.openPopup = function () {
             ngDialog.open({ 
                 template: popupTemplate,
                 plain: true,
@@ -18,6 +18,9 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
             });
         };
     
+        $scope.addIngredient = function (ingredient) {
+            alert('clicked! ' + ingredient);
+        };
 
         $scope.addIngredientsLength = function () {
             var len = $scope.menuRes.length;
@@ -131,6 +134,8 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
             order.quantity = (typeof pizza.quantity === 'undefined') ? 1 : parseFloat(pizza.quantity);
             order.price = parseFloat(pizza.price * order.quantity);
             
+            $scope.openPopup();
+            
             $scope.addNewOrder(order);
         };
 
@@ -154,12 +159,11 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
     
         popupTemplate ='<div> \
                     <p>Personalizacja pizzy</p>\
-                    <table ng-repeat="(key, ingredients) in ingredientsCategory">\
+                    <table ng-repeat="ingredients in ingredientsCategory">\
                     <tr>\
-                        <td>{{key}}</td> \
-                    </tr>\
-                    <tr>\
-                        <td ng-repeat="ing in ingredients" ng-click="addIngredient">{{ing}}</td>\
+                        <td ng-repeat="ing in ingredients"> \
+                            <a ng-click="addIngredient(ing)">{{ing}}</a> \
+                        </td>\
                     </tr>\
                 </div>'
          

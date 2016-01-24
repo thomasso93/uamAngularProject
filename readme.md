@@ -10,7 +10,7 @@ Stage 2 – what’s new?
 
 Stage 2 – what’s changed?
 - Each pizza contains two arrays – one for storing basic ingredient ids and one for extra ingredient ids.
-- There is new API for getting list of ingredients, each consisting of its id, display label and price.
+- ~~There is new API for getting list of ingredients, each consisting of its id, display label and price.~~
 
 Stage 3 – what’s new?
 - An extra information on the order status screen.
