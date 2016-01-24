@@ -1,5 +1,15 @@
-angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orders','$location', 'pizzaService', function($scope, $http, orders, $location, pizzaService) {
+angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orders','$location', 'pizzaService', 'ngDialog', function($scope, $http, orders, $location, pizzaService, ngDialog) {
         
+        $scope.clickToOpen = function () {
+            ngDialog.open({ 
+                template: popupTemplate,
+                plain: true,
+//                data: $scope.aaa
+                scope: $scope
+            });
+        };
+    
+    
         pizzaService.getMenu().then(function(data) {
             $scope.menuRes = data.data;
             $scope.addIngredientsLength();
@@ -138,6 +148,10 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
          $scope.finalizeOrder = function () {
             $location.path("/order");
         };
-
+    
+        popupTemplate ='<div> \
+                    <p>Personalizacja pizzy</p>\
+                    <p> price : {{totalPrice()}}</p>\
+                </div>'
          
     }]);

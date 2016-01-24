@@ -1,4 +1,4 @@
-var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap']);
+var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap', 'ngDialog']);
 
 	 pizzaApp.config(['$routeProvider', function($routeProvider) {
             $routeProvider.
@@ -31,3 +31,4 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap']);
         var orders = [];
         return orders;
     });
+

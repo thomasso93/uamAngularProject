@@ -3,7 +3,7 @@
 ####TODO:
 
 Stage 2 – what’s new?
- - Pizzas in the menu should be grouped by number of ingredients.
+ - ~~Pizzas in the menu should be grouped by number of ingredients.~~
  - Ingredients customization popup.
  - While adding each pizza to basket user should see a popup, where he can customize given pizza.
  - Each pizza has two sets of ingredients – basic and extra. Removing of basic ingredients does not influence the price. Adding an extra ingredient influence pizza price by increasing it with the cost of ingredient.

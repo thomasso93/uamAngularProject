@@ -1,5 +1,5 @@
 <html ng-app="pizzaApp">
-<body ng-controller="mainController">   
+<body ng-controller="mainController"> 
   <div class="main">
     <div class="menu" data-ng-init="getMenu()">
       <h1>Menu:</h1>  
@@ -24,18 +24,14 @@
               <input type="number" min="0" max="100" class="menuInput" id="{{pizza}}" name="quantity" ng-model="pizza.quantity">
             </td>
             <td class="menu" id="addBtn">
-                <div class="addBtn" ng-click="addPizzaToBasket(pizza)">
+                <div class="addBtn" ng-click="clickToOpen(); addPizzaToBasket(pizza)">
                   <img ng-src="http://i.imgur.com/cKD4s3V.jpg/{{hash}}" alt="Dodaj do koszyka"/>
                 </div>
             </td>
           </tr>
         </table>
     </div>
-      
-
-      
-      
-      
+    
     <div class="basket">
       <h1 class="one">Koszyk <img ng-src="http://i.imgur.com/yLHJyjy.png/{{hash}}" alt="Koszyk"/></h1>
         <table id="basket">
