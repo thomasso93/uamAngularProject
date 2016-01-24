@@ -22,7 +22,7 @@
                     <th>Ilość</th>
                 </tr>
                 <tr ng-repeat="pizza in status.order">
-                    <td class="menu" id="pizzaId">  {{ pizza.pizza.id }} </td>
+                    <td class="menu">  {{ $index +1 }} </td>
                     <td class="menu"> {{ pizza.pizza.name}} </td>
                     <td class="menu">
                         <option ng-repeat="ingredient in pizza.pizza.ingredients" value="{{ingredient}}">{{ingredient}}</option>

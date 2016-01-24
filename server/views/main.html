@@ -13,9 +13,8 @@
             <th></th>
           </tr>
           <tr ng-repeat="pizza in menuRes">
-            <td class="menu" id="pizzaId">  {{ pizza.id }} </td>
+            <td class="menu">  {{ $index + 1 }} </td>
             <td class="menu"> {{ pizza.name }} </td>
-            <td class="menu"> {{ pizza.ingredientsNumber }} </td>
             <td class="menu">
               <option ng-repeat="ingredient in pizza.ingredients" value="{{ingredient}}">{{ingredient}}</option>
             </td>
