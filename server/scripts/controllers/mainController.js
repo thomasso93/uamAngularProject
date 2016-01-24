@@ -1,21 +1,24 @@
 angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orders','$location', 'pizzaService', 'ngDialog', function($scope, $http, orders, $location, pizzaService, ngDialog) {
-        
-        $scope.clickToOpen = function () {
-            ngDialog.open({ 
-                template: popupTemplate,
-                plain: true,
-//                data: $scope.aaa
-                scope: $scope
-            });
-        };
-    
-    
+            
         pizzaService.getMenu().then(function(data) {
             $scope.menuRes = data.data;
             $scope.addIngredientsLength();
             $scope.groupBy( 'ingredientsNumber' )
         });
     
+        pizzaService.getIngredients().then(function(data) {
+           $scope.ingredients = data.data;
+        });
+    
+        $scope.clickToOpen = function () {
+            ngDialog.open({ 
+                template: popupTemplate,
+                plain: true,
+                scope: $scope
+            });
+        };
+    
+
         $scope.addIngredientsLength = function () {
             var len = $scope.menuRes.length;
             for (var i=0; i<len; i++) {
@@ -151,7 +154,13 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
     
         popupTemplate ='<div> \
                     <p>Personalizacja pizzy</p>\
-                    <p> price : {{totalPrice()}}</p>\
+                    <table ng-repeat="ingredient in ingredients">\
+                    <tr ng-repeat="ing in ingredient">\
+                        <td>{{ing}}</td>\
+                        <td>\
+                            <button>Dodaj</button>\
+                        </td>\
+                    </tr>\
                 </div>'
          
     }]);

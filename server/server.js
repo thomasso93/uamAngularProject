@@ -37,6 +37,18 @@ app.get('/', function (req, res) {
 });
 
 
+app.get('/ingredients', function (req, res) {
+    setTimeout(function () {
+        res.json({
+            ingredients: [
+                'Ananas', 'Bekon', 'Boczek', 'Brokuły', 'Cebula', 'Camembert', 'Extra ser', 'Krewetki', 'Kabanos', 'Kukurydza', 'Kapusta pekińska',
+                'Kebab drobiowy', 'Lazur', 'Małże', 'Pieczarki', 'Papryka', 'Pomidor', 'Papryka peperoni', 'Sos', 'Szynka', 'Salami', 'Tuńczyk'
+            ]
+
+        });
+    }, _.random(100, 1500));
+});
+
 app.get('/contact', function (req, res) {
     setTimeout(function () {
         res.json({

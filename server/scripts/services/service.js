@@ -18,6 +18,9 @@ angular.module('pizzaApp').service('pizzaService', pizzaService);
       },
       getContact: function() {
         return $http.get('http://localhost:8080/contact/');
-      }
+      },
+      getIngredients: function() {
+          return $http.get('http://localhost:8080/ingredients/');
+      }    
     };
 }
