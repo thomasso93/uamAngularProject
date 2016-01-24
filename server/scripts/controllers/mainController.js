@@ -2,9 +2,54 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
         
         pizzaService.getMenu().then(function(data) {
             $scope.menuRes = data.data;
+            $scope.addIngredientsLength();
+            $scope.groupBy( 'ingredientsNumber' )
         });
-        
+    
+        $scope.addIngredientsLength = function () {
+            var len = $scope.menuRes.length;
+            for (var i=0; i<len; i++) {
+                pizza = $scope.menuRes[i];
+                pizza.ingredientsNumber = pizza.ingredients.length;
+            }
+        };
+    
+        function sortOn(collection, name) {
+            collection.sort(
+                function(a, b) {
+                    if ( a[name] <= b[name] ) {
+                        return(-1);
+                    }
+                    return(1);
+                }
+            );
+        }    
+    
+        $scope.groupBy = function(attribute) {
+            $scope.groups = [];
+            
+            sortOn( $scope.menuRes, attribute );
+            var groupValue = "_INVALID_GROUP_VALUE_";
+
+            for (var i=0; i<$scope.menuRes.length; i++) {
+                var pizza = $scope.menuRes[i];
+                if (pizza[attribute] !== groupValue ) {
+                    var group = {
+                        label: pizza[attribute],
+                        pizzas: []
+                    };
+                    groupValue = group.label;
+                    $scope.groups.push(group);
+                }
+                group.pizzas.push(pizza);
+            }
+        };
+    
         $scope.orders = orders;
+    
+        $scope.numberOfIngredients = function (pizza) {
+            return pizza.ingredients.length;
+        };
     
         $scope.totalPrice = function () {
             var total = 0;
