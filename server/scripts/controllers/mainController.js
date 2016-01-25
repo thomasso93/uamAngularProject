@@ -158,9 +158,9 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
             $location.path("/order");
         };
     
-        popupTemplate ='<div> \
+        popupTemplate ='<div class="pizzaPersonalization"> \
                     <p>Personalizacja pizzy</p>\
-                    <table >\
+                    <table>\
                         <th>Nazwa</th> \
                         <th>Cena</th> \
                         <tr ng-repeat="ingredient in ingredients">\
@@ -172,6 +172,26 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
                             </td>\
                         </tr>\
                     </table>\
+                </div>\
+                <div class="orderPersonalization">\
+                    <p>Zamówienie</p>\
+                    <table id="summary"> \
+                    <tr> \
+                        <th>Nazwa</th> \
+                        <th>Ilość</th> \
+                        <th>Cena</th> \
+                    </tr> \
+                    <tr ng-repeat="order in orders"> \
+                        <td>{{order.name}}</td>    \
+                        <td>{{order.quantity}}</td>\
+                        <td>{{order.price.toFixed(2)}}</td>\
+                    </tr> \
+                    <tr> \
+                        <td><b>Razem do zapłaty: {{totalPrice()}} zł</b></td> \
+                        <td></td> \
+                    </tr>\
+                    <tr></tr> \
+            </table> \
                 </div>'
          
     }]);

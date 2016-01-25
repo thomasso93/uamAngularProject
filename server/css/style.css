@@ -61,8 +61,6 @@ li a:hover:not(.active) {
     background-color: #111;
 }
 
-
-
 table #menu{
     border-collapse: collapse;
     width: 50%;
@@ -110,4 +108,13 @@ input[type="number"] {
 #message2{
     position: relative;
     left: 104px;
+}
+
+.pizzaPersonalization {
+    width: 30%;
+    float: left;
+}
+
+.orderPersonalization {
+    width: 65%;
 }
