@@ -75,6 +75,7 @@ table #basket{
 th, td {
     text-align: left;
     padding: 8px;
+    word-wrap: break-word;
 }
 
 tr:nth-child(even){background-color: #f2f2f2}
@@ -111,10 +112,13 @@ input[type="number"] {
 }
 
 .pizzaPersonalization {
-    width: 30%;
     float: left;
+    margin-right: 10px;
 }
 
 .orderPersonalization {
-    width: 65%;
+}
+
+table {
+    table-layout: fixed;
 }

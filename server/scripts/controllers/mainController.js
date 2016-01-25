@@ -8,19 +8,19 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
     
         pizzaService.getIngredients().then(function(data) {
            $scope.ingredients = data.data;
-            console.log($scope.ingredients);
         });
     
         $scope.openPopup = function () {
             ngDialog.open({ 
-                template: popupTemplate,
-                plain: true,
+                template: '../../views/popup.html',
                 scope: $scope
             });
         };
     
+        $scope.extraIngredients = [];
+    
         $scope.addIngredient = function (ingredient) {
-            alert('clicked! ' + ingredient);
+            $scope.extraIngredients.push(ingredient);
         };
 
         $scope.addIngredientsLength = function () {
@@ -134,10 +134,14 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
             order.id = pizza.id;
             order.quantity = (typeof pizza.quantity === 'undefined') ? 1 : parseFloat(pizza.quantity);
             order.price = parseFloat(pizza.price * order.quantity);
+            order.ingredients = pizza.ingredients;
+            order.extraIngredients = $scope.extraIngredients;   
             
             $scope.openPopup();
-            
+                     
+            console.log(orders);
             $scope.addNewOrder(order);
+//            $scope.extraIngredients = [];
         };
 
          $scope.deletePizzaFromBasket = function (order) {  
@@ -158,40 +162,4 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
             $location.path("/order");
         };
     
-        popupTemplate ='<div class="pizzaPersonalization"> \
-                    <p>Personalizacja pizzy</p>\
-                    <table>\
-                        <th>Nazwa</th> \
-                        <th>Cena</th> \
-                        <tr ng-repeat="ingredient in ingredients">\
-                            <td> \
-                               {{ingredient.name}} \
-                            </td>\
-                            <td> \
-                               {{ingredient.price.toFixed(2)}} \
-                            </td>\
-                        </tr>\
-                    </table>\
-                </div>\
-                <div class="orderPersonalization">\
-                    <p>Zamówienie</p>\
-                    <table id="summary"> \
-                    <tr> \
-                        <th>Nazwa</th> \
-                        <th>Ilość</th> \
-                        <th>Cena</th> \
-                    </tr> \
-                    <tr ng-repeat="order in orders"> \
-                        <td>{{order.name}}</td>    \
-                        <td>{{order.quantity}}</td>\
-                        <td>{{order.price.toFixed(2)}}</td>\
-                    </tr> \
-                    <tr> \
-                        <td><b>Razem do zapłaty: {{totalPrice()}} zł</b></td> \
-                        <td></td> \
-                    </tr>\
-                    <tr></tr> \
-            </table> \
-                </div>'
-         
     }]);

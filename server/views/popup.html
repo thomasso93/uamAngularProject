@@ -1,0 +1,52 @@
+<div class="pizzaPersonalization"> 
+    <p>Personalizacja pizzy</p>
+    
+    <table>
+        <th>Nazwa</th> 
+        <th>Cena</th> 
+        <tr ng-repeat="ingredient in ingredients">
+            <td ng-click="addIngredient(ingredient)"> 
+               {{ingredient.name}} 
+            </td>
+            <td> 
+               {{ingredient.price.toFixed(2)}} 
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+<div class="orderPersonalization">
+    <p>Zamówienie</p>
+    
+    <table> 
+    <tr> 
+        <th>Nazwa</th> 
+        <th>Składniki</th> 
+        <th>Ilość</th> 
+        <th>Cena</th> 
+    </tr> 
+    <tr ng-repeat="order in orders"> 
+        <td>{{order.name}}</td>    
+        <td>{{order.ingredients.toString()}}</td>
+        <td>{{order.quantity}}</td>
+        <td>{{order.price.toFixed(2)}}</td>
+        <td><a ng-repeat="extra in order.extraIngredients track by $index">{{extra.name}} </a></td>
+    </tr> 
+    <tr> 
+        <td><b>Razem do zapłaty: {{totalPrice()}} zł</b></td> 
+        <td></td> 
+    </tr>
+    <tr></tr> 
+    
+    </table> 
+    
+    <table >
+        <th>Składnik</th>
+        <th>Cena</th>
+        <tr ng-repeat="extra in extraIngredients">
+            <td>{{extra.name}}</td> 
+            <td>{{extra.price.toFixed(2)}}</td> 
+        </tr>
+    </table>
+</div>
