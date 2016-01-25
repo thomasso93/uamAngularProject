@@ -29,6 +29,12 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
         
         $scope.currentOrder = {};
     
+        $scope.deleteBasicIngredient = function (ingredient) {
+            var ingredients = $scope.currentOrder.ingredients;
+            var index = ingredients.indexOf(ingredient);
+            ingredients.splice(index, 1);
+        };
+    
         $scope.deleteExtraIngredient = function (ingredient) {
             var index = $scope.extraIngredients.indexOf(ingredient);
             ingredient.price = -Math.abs(ingredient.price);

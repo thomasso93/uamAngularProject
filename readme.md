@@ -1,15 +1,21 @@
 #Project - Pizzeria
 
+####IMPORTANT NOTE FOR TEACHERS:
+
+ * After gulp build:prod please use command gulp index2
+
 ####TODO:
 
 Stage 2 – what’s new?
  - ~~Pizzas in the menu should be grouped by number of ingredients.~~
- - Ingredients customization popup.
- - While adding each pizza to basket user should see a popup, where he can customize given pizza.
- - Each pizza has two sets of ingredients – basic and extra. Removing of basic ingredients does not influence the price. Adding an extra ingredient influence pizza price by increasing it with the cost of ingredient.
+ - ~~Ingredients customization popup.~~
+ - ~~While adding each pizza to basket user should see a popup, where he can customize given pizza.~~
+ - ~~Each pizza has two sets of ingredients – basic and extra.~~ 
+ - ~~Removing of basic ingredients does not influence the price.~~ 
+ - ~~Adding an extra ingredient influence pizza price by increasing it with the cost of ingredient.~~
 
 Stage 2 – what’s changed?
-- Each pizza contains two arrays – one for storing basic ingredient ids and one for extra ingredient ids.
+- ~~Each pizza contains two arrays – one for storing basic ingredient ids and one for extra ingredient ids.~~
 - ~~There is new API for getting list of ingredients, each consisting of its id, display label and price.~~
 
 Stage 3 – what’s new?
@@ -77,7 +83,6 @@ Stage 3 – what’s changed?
  * do not push vendors to the repo
 * We assume that commands git clone /repo/, npm install, gulp build:prod and node server/server.js will start project on localhost:8080
  * if you changed the process let us know in readme!
- *note:after gulp build:prod please use command gulp index2
 * Dedicated repo for project (don't do project in forks of the lesson materials).
 * Best practices:
  * angular modules, components, directives

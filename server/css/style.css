@@ -122,3 +122,17 @@ input[type="number"] {
 table {
     table-layout: fixed;
 }
+
+.basic {
+    float: left;
+}
+
+.popup-price {
+    margin-left: 20px;
+    float: left;
+}
+
+.extra {
+    float: left;
+    margin-left: 20px;
+}

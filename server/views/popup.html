@@ -31,32 +31,50 @@
         <th>Ilość</th> 
         <th>Cena</th> 
     </tr> 
-<!--    <tr ng-repeat="order in orders"> -->
     <tr> 
         <td>{{currentOrder.name}}</td>    
-        <td>{{currentOrder.ingredients.toString()}}</td>
+        <td><a ng-repeat="ingredient in currentOrder.ingredients">{{ingredient}} </a></td>
         <td><a ng-repeat="extra in currentOrder.extraIngredients track by $index">{{extra.name}} </a></td>
         <td>{{currentOrder.quantity}}</td>
         <td>{{currentOrder.price.toFixed(2)}}</td>
     </tr> 
-    <tr> 
-        <td><b>Razem do zapłaty: {{totalPrice()}} zł</b></td> 
-        <td></td> 
-    </tr>
     <tr></tr> 
     
-    </table> 
-    
-    <table >
-        <th>Składnik</th>
-        <th>Cena</th>
-        <th></th>
-        <tr ng-repeat="extra in extraIngredients">
-            <td>{{extra.name}}</td> 
-            <td>{{extra.price.toFixed(2)}}</td>
-            <td>
-                <button ng-click="deleteExtraIngredient(extra)">Usuń</button>
-            </td>
-        </tr>
     </table>
+    
+    <div class="basic">
+        <p>Podstawowe składniki:</p>
+        <table>
+            <th>Składnik</th>
+            <th></th>
+            <tr ng-repeat="ingredient in currentOrder.ingredients">
+                <td>{{ingredient}}</td> 
+                <td>
+                    <button ng-click="deleteBasicIngredient(ingredient)">Usuń</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="extra">
+        <p>Dodatkowe składniki:</p>
+        <table>
+            <th>Składnik</th>
+            <th>Cena</th>
+            <th></th>
+            <tr ng-repeat="extra in extraIngredients">
+                <td>{{extra.name}}</td> 
+                <td>{{extra.price.toFixed(2)}}</td>
+                <td>
+                    <button ng-click="deleteExtraIngredient(extra)">Usuń</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="popup-price">
+        <p>
+            <b>Razem do zapłaty: {{totalPrice()}} zł</b>
+        </p>
+    </div>
 </div>
