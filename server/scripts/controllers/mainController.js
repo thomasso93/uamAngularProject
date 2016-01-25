@@ -7,7 +7,8 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
         });
     
         pizzaService.getIngredients().then(function(data) {
-           $scope.ingredientsCategory = data.data;
+           $scope.ingredients = data.data;
+            console.log($scope.ingredients);
         });
     
         $scope.openPopup = function () {
@@ -159,10 +160,15 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
     
         popupTemplate ='<div> \
                     <p>Personalizacja pizzy</p>\
-                    <table ng-repeat="ingredients in ingredientsCategory">\
+                    <table ng-repeat="ingredient in ingredients">\
+                    <th>Nazwa</th> \
+                    <th>Cena</th> \
                     <tr>\
-                        <td ng-repeat="ing in ingredients"> \
-                            <a ng-click="addIngredient(ing)">{{ing}}</a> \
+                        <td> \
+                           {{ingredient.name}} \
+                        </td>\
+                        <td> \
+                           {{ingredient.price}} \
                         </td>\
                     </tr>\
                 </div>'

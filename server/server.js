@@ -40,11 +40,6 @@ app.get('/', function (req, res) {
 
 app.get('/ingredients', function (req, res) {
     setTimeout(function () {
-//        res.json({
-//            cheap: ['Boczek', 'Brokuły', 'Cebula', 'Extra ser', 'Sos', 'Szynka', 'Kukurydza', 'Kapusta pekińska', 'Pieczarki', 'Papryka', 'Pomidor'],
-//            medium: ['Ananas', 'Bekon', 'Kabanos', 'Kebab drobiowy', 'Salami', 'Tuńczyk', 'Papryka peperoni'],
-//            extra: ['Lazur', 'Małże', 'Camembert', 'Krewetki']
-//        });
         res.json(ingredients);
     }, _.random(100, 1500));
 });
