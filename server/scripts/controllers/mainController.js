@@ -160,17 +160,18 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
     
         popupTemplate ='<div> \
                     <p>Personalizacja pizzy</p>\
-                    <table ng-repeat="ingredient in ingredients">\
-                    <th>Nazwa</th> \
-                    <th>Cena</th> \
-                    <tr>\
-                        <td> \
-                           {{ingredient.name}} \
-                        </td>\
-                        <td> \
-                           {{ingredient.price}} \
-                        </td>\
-                    </tr>\
+                    <table >\
+                        <th>Nazwa</th> \
+                        <th>Cena</th> \
+                        <tr ng-repeat="ingredient in ingredients">\
+                            <td> \
+                               {{ingredient.name}} \
+                            </td>\
+                            <td> \
+                               {{ingredient.price.toFixed(2)}} \
+                            </td>\
+                        </tr>\
+                    </table>\
                 </div>'
          
     }]);
