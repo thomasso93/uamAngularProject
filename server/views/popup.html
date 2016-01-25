@@ -4,12 +4,16 @@
     <table>
         <th>Nazwa</th> 
         <th>Cena</th> 
+        <th></th> 
         <tr ng-repeat="ingredient in ingredients">
-            <td ng-click="addIngredient(ingredient)"> 
+            <td> 
                {{ingredient.name}} 
             </td>
             <td> 
                {{ingredient.price.toFixed(2)}} 
+            </td>
+            <td>
+                <button ng-click="addIngredient(ingredient)">Dodaj</button>
             </td>
         </tr>
     </table>
@@ -46,9 +50,13 @@
     <table >
         <th>Składnik</th>
         <th>Cena</th>
+        <th></th>
         <tr ng-repeat="extra in extraIngredients">
             <td>{{extra.name}}</td> 
-            <td>{{extra.price.toFixed(2)}}</td> 
+            <td>{{extra.price.toFixed(2)}}</td>
+            <td>
+                <button ng-click="deleteExtraIngredient(extra)">Usuń</button>
+            </td>
         </tr>
     </table>
 </div>
