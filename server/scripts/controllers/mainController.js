@@ -11,9 +11,15 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
         });
     
         $scope.openPopup = function () {
-            ngDialog.open({ 
+            var dialog = ngDialog.open({ 
                 template: '../../views/popup.html',
                 scope: $scope
+            });
+            
+            dialog.closePromise.then( function () {
+                console.log('cleared extras');
+                $scope.extraIngredients = [];
+                console.log($scope.extraIngredients);
             });
         };
     

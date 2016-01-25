@@ -23,15 +23,16 @@
     <tr> 
         <th>Nazwa</th> 
         <th>Składniki</th> 
+        <th>Dodatki</th> 
         <th>Ilość</th> 
         <th>Cena</th> 
     </tr> 
     <tr ng-repeat="order in orders"> 
         <td>{{order.name}}</td>    
         <td>{{order.ingredients.toString()}}</td>
+        <td><a ng-repeat="extra in order.extraIngredients track by $index">{{extra.name}} </a></td>
         <td>{{order.quantity}}</td>
         <td>{{order.price.toFixed(2)}}</td>
-        <td><a ng-repeat="extra in order.extraIngredients track by $index">{{extra.name}} </a></td>
     </tr> 
     <tr> 
         <td><b>Razem do zapłaty: {{totalPrice()}} zł</b></td> 
