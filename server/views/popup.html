@@ -27,12 +27,13 @@
         <th>Ilość</th> 
         <th>Cena</th> 
     </tr> 
-    <tr ng-repeat="order in orders"> 
-        <td>{{order.name}}</td>    
-        <td>{{order.ingredients.toString()}}</td>
-        <td><a ng-repeat="extra in order.extraIngredients track by $index">{{extra.name}} </a></td>
-        <td>{{order.quantity}}</td>
-        <td>{{order.price.toFixed(2)}}</td>
+<!--    <tr ng-repeat="order in orders"> -->
+    <tr> 
+        <td>{{currentOrder.name}}</td>    
+        <td>{{currentOrder.ingredients.toString()}}</td>
+        <td><a ng-repeat="extra in currentOrder.extraIngredients track by $index">{{extra.name}} </a></td>
+        <td>{{currentOrder.quantity}}</td>
+        <td>{{currentOrder.price.toFixed(2)}}</td>
     </tr> 
     <tr> 
         <td><b>Razem do zapłaty: {{totalPrice()}} zł</b></td> 

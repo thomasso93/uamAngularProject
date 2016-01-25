@@ -17,16 +17,26 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
             });
             
             dialog.closePromise.then( function () {
-                console.log('cleared extras');
+                index = $scope.currentIndex-1;
+                //w przyszłości należy dodać do składników a nie zastępować (np. gdy mamy juz pizza a dodajemy jej składniki)
+                $scope.orders[index].extraIngredients = $scope.extraIngredients;
                 $scope.extraIngredients = [];
-                console.log($scope.extraIngredients);
             });
         };
     
         $scope.extraIngredients = [];
+        $scope.extraCost = 0;
+        
+        $scope.currentOrder = {};
+        
+        $scope.calculateExtraPrice = function (ingredient) {
+            $scope.currentOrder.price += ingredient.price;
+        };
     
         $scope.addIngredient = function (ingredient) {
+            $scope.extraCost += ingredient.price;
             $scope.extraIngredients.push(ingredient);
+            $scope.calculateExtraPrice(ingredient);
         };
 
         $scope.addIngredientsLength = function () {
@@ -124,12 +134,16 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
         $scope.addNewOrder = function (order) {
             if (order.price != 0) {
                 var index = $scope.findOrder(order); 
+                order.extraIngredients = $scope.extraIngredients;
                 if (index != -1) {
                     $scope.orders[index].quantity += order.quantity;
                     $scope.updatePrice($scope.orders[index]);
+                    $scope.currentIndex = index;
                 }
-                else
+                else {
                     $scope.orders.push(order);
+                    $scope.currentIndex = $scope.orders.length;
+                }
             }
         };
      
@@ -141,13 +155,10 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
             order.quantity = (typeof pizza.quantity === 'undefined') ? 1 : parseFloat(pizza.quantity);
             order.price = parseFloat(pizza.price * order.quantity);
             order.ingredients = pizza.ingredients;
-            order.extraIngredients = $scope.extraIngredients;   
-            
+            $scope.currentOrder = order;
             $scope.openPopup();
-                     
-            console.log(orders);
+            
             $scope.addNewOrder(order);
-//            $scope.extraIngredients = [];
         };
 
          $scope.deletePizzaFromBasket = function (order) {  
