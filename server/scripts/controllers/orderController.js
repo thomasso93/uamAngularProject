@@ -8,10 +8,13 @@ angular.module('pizzaApp').controller('orderController',['$scope', '$http','orde
     
         $scope.orderedExtras = [];
     
+        $scope.addExtrasToOrders = function () {
+            var index = $scope.orders.length - 1;
+            $scope.orders[index].extras = $scope.orderedExtras;
+        };
+    
         $scope.addExtra = function (extra) {
-            console.log(extra);
             $scope.orderedExtras.push(extra);
-            console.log($scope.orderedExtras);
         };
     
         $scope.deleteExtra = function (extra) {
@@ -42,6 +45,7 @@ angular.module('pizzaApp').controller('orderController',['$scope', '$http','orde
             });
             
             dialog.closePromise.then( function () {
+                $scope.addExtrasToOrders();
             });
         };
          

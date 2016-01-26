@@ -101,7 +101,8 @@ app.post('/order', function (req, res) {
                         pizza: _.find(menu, {
                             id: position.id
                         }),
-                        quantity: position.quantity
+                        quantity: position.quantity,
+                        extras: position.extras
                     };
                 }),
                 ordered: new Date(now),
