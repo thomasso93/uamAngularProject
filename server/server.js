@@ -12,6 +12,7 @@ var express = require('express'),
     _ = require('lodash'),
     menu = require('./menu');
     ingredients = require('./ingredients');
+    extras = require('./extras');
 
 var app = express(),
     orders = {},
@@ -32,7 +33,6 @@ app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     setTimeout(function () {
-        //es.send("hello world");
         res.sendFile(__dirname + '/index.html');
     }, _.random(100, 1500));
 });
@@ -41,6 +41,12 @@ app.get('/', function (req, res) {
 app.get('/ingredients', function (req, res) {
     setTimeout(function () {
         res.json(ingredients);
+    }, _.random(100, 1500));
+});
+
+app.get('/extras', function (req, res) {
+    setTimeout(function () {
+        res.json(extras);
     }, _.random(100, 1500));
 });
 

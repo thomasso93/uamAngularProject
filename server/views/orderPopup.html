@@ -1,0 +1,67 @@
+<div class="pizzaPersonalization"> 
+    <p>Personalizacja pizzy</p>
+    
+    <table>
+        <th>Nazwa</th> 
+        <th>Cena</th> 
+        <th></th> 
+        <tr ng-repeat="extra in extras">
+            <td> 
+               {{extra.label}} 
+            </td>
+            <td> 
+               {{extra.price.toFixed(2)}} 
+            </td>
+            <td>
+                <button ng-click="addExtra(extra)">Dodaj</button>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+<div class="orderPersonalization">
+    <p>Zamówienie</p>
+    
+    <table> 
+    <tr> 
+        <th>Nazwa</th> 
+        <th>Składniki</th> 
+        <th>Dodatki</th> 
+        <th>Ilość</th> 
+        <th>Cena</th> 
+    </tr> 
+    <tr ng-repeat="order in orders"> 
+        <td>{{order.name}}</td>    
+        <td><a ng-repeat="ingredient in order.ingredients">{{ingredient}} </a></td>
+        <td><a ng-repeat="extra in order.extraIngredients track by $index">{{extra.name}} </a></td>
+        <td>{{order.quantity}}</td>
+        <td>{{order.price.toFixed(2)}}</td>
+    </tr> 
+    <tr></tr> 
+    
+    </table>
+    
+    <div class="extra">
+        <p>Dodatki:</p>
+        <table>
+            <th>Dodatek</th>
+            <th>Cena</th>
+            <th></th>
+            <tr ng-repeat="extra in orderedExtras">
+                <td>{{extra.label}}</td> 
+                <td>{{extra.price.toFixed(2)}}</td>
+                <td>
+                    <button ng-click="deleteExtra(extra)">Usuń</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="popup-price">
+        <p>
+            <b>Razem do zapłaty: {{totalPrice()}} zł</b>
+            <button ng-click="closeThisDialog('Gotowe')">Gotowe</button>
+        </p>
+    </div>
+</div>
