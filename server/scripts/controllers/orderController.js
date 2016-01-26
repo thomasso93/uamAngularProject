@@ -8,6 +8,14 @@ angular.module('pizzaApp').controller('orderController',['$scope', '$http','orde
     
         $scope.orderedExtras = [];
     
+        $scope.total = $scope.totalPrice();
+    
+        $scope.changePrice = function (price) {
+            var total = parseFloat($scope.total);
+            total += price;
+            $scope.total = total.toFixed(2);
+        };
+    
         $scope.addExtrasToOrders = function () {
             var index = $scope.orders.length - 1;
             $scope.orders[index].extras = $scope.orderedExtras;
@@ -15,9 +23,11 @@ angular.module('pizzaApp').controller('orderController',['$scope', '$http','orde
     
         $scope.addExtra = function (extra) {
             $scope.orderedExtras.push(extra);
+            $scope.changePrice(extra.price);
         };
     
         $scope.deleteExtra = function (extra) {
+            $scope.changePrice(-Math.abs(extra.price));
             var index = $scope.orderedExtras.indexOf(extra);
             $scope.orderedExtras.splice(index, 1);
         }

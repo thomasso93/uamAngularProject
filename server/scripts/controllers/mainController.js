@@ -108,6 +108,7 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
             return total.toFixed(2);
         };
     
+    
         $scope.findOrderPrize = function (order) {
             var price = 0;
             for (var i=0; i< $scope.menuRes.length; i++) {
