@@ -136,3 +136,10 @@ table {
     float: left;
     margin-left: 20px;
 }
+
+.pizzaSummary {
+    float: left;
+}
+
+.extrasSummary {
+}
