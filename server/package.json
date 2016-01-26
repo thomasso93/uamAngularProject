@@ -20,6 +20,7 @@
     "gulp-uglify": "^1.5.1",
     "gulp-util": "^3.0.7",
     "jshint": "^2.8.0",
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "websocket": "^1.0.22"
   }
 }

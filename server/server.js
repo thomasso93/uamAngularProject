@@ -8,6 +8,7 @@
  *  GET /order/:id - returns object with order, ordered (time when order was processed) and estimated (time of arrival)
  */
 var express = require('express'),
+    webSocketServer = require('websocket').server,
     bodyParser = require('body-parser'),
     _ = require('lodash'),
     menu = require('./menu');
@@ -17,6 +18,8 @@ var express = require('express'),
 var app = express(),
     orders = {},
     i = 0;
+
+var httpServer, wsServer, wsConnections = [];
 
 app.use(express.static(__dirname + '/../build/'));
 app.use(express.static(__dirname + '/scripts'))
@@ -89,6 +92,21 @@ function checkIsOrderValid(order) {
     
 }
 
+
+/**
+    * Update all connected WS clients
+    * @param {number} id
+    * @param {object} order
+*/
+function updateClients(id, order) {
+    _.forEach(wsConnections, function(connection) {
+        connection.sendUTF(JSON.stringify({
+            id: id,
+            order: order
+        }));
+    });
+ }
+
 app.post('/order', function (req, res) {
     setTimeout(function () {
         console.log('Order recived', req.body);
@@ -116,6 +134,7 @@ app.post('/order', function (req, res) {
             i++;
         } else {
             res.status(500).send('Invalid order.');
+            console.error('Invalid order!');
         }
     }, _.random(100, 1500));
 });
@@ -130,14 +149,43 @@ app.get('/order/:id', function (req, res) {
     }, _.random(100, 1500));
 });
 
-setInterval(function () {
-    _.forEach(orders, function (order, id) {
-        if (order.ordered > new Date()) {
-            delete orders[id];
-        }
-    });
-}, 300);
+ setInterval(function () {
+     _.forEach(orders, function (order, id) {
+        var diff = order.estimated - order.ordered;
 
-var server = app.listen(8080, function () {
-    console.log('Server running on port 8080.');
+        if (order.status < 1 && order.ordered * 1 + diff * 0.2 <= Date.now()) {
+            order.status = 1;
+            console.log('Order ' + id + ' changed status to 1');
+            updateClients(id, order);
+        }
+        if (order.status < 2 && order.ordered * 1 + diff * 0.5 <= Date.now()) {
+            order.status = 2;
+            console.log('Order ' + id + ' changed status to 2');
+            updateClients(id, order);
+        }
+        if (order.status < 3 && order.estimated <= Date.now()) {
+            order.status = 3;
+            console.log('Order ' + id + ' changed status to 3');
+            updateClients(id, order);
+         }
+     });
+}, 500);
+
+httpServer = app.listen(8080, function () {
+     console.log('Server running on port 8080.');
+ });
+
+wsServer = new webSocketServer({
+   httpServer: httpServer
+});
+
+wsServer.on('request', function(request) {
+    var connection = request.accept(null, request.origin);
+    var index = wsConnections.push(connection);
+
+    console.log('WebSocket Client connected on ' + new Date());
+
+    connection.on('close', function(con) {
+        wsConnections.slice(index, 1);
+    });
 });
