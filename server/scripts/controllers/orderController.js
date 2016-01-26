@@ -1,4 +1,4 @@
-angular.module('pizzaApp').controller('orderController',['$scope', '$http','orders', '$location','pizzaService', 'ngDialog', function($scope, $http, orders, $location, pizzaService, ngDialog) {
+angular.module('pizzaApp').controller('orderController',['$scope', '$http','orders', '$location','pizzaService', 'ngDialog', function($scope, $http, orders, $location, pizzaService, ngDialog, $localStorage, $sessionStorage) {
         
         $scope.orders = orders;
     
