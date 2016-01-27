@@ -149,7 +149,8 @@ app.get('/order/:id', function (req, res) {
     }, _.random(100, 1500));
 });
 
- setInterval(function () {
+
+setInterval(function () {
      _.forEach(orders, function (order, id) {
         var diff = order.estimated - order.ordered;
 
@@ -180,6 +181,8 @@ wsServer = new webSocketServer({
 });
 
 wsServer.on('request', function(request) {
+
+    request.emit('news', { hello: 'world' }); 
     var connection = request.accept(null, request.origin);
     var index = wsConnections.push(connection);
 
