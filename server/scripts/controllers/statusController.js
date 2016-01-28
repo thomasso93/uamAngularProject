@@ -1,12 +1,6 @@
 angular.module('pizzaApp').controller('statusController',['$scope', '$http', '$routeParams', 'pizzaService', 'orders', function($scope, $http, $routeParams, pizzaService, orders) {
         
         
-        $scope.orders = orders;
-    
-        $scope.orderId = $routeParams.id;
-    
-
-   
             // if user is running mozilla then use it's built-in WebSocket
             window.WebSocket = window.WebSocket || window.MozWebSocket;
 
@@ -36,7 +30,11 @@ angular.module('pizzaApp').controller('statusController',['$scope', '$http', '$r
             };
        
 
-       
+
+        $scope.orders = orders;
+    
+        $scope.orderId = $routeParams.id;
+    
         $scope.getExtras = function () {
             var index = $scope.orders.length - 1;
             return $scope.orders[index].extras;
