@@ -4,16 +4,25 @@ angular.module('pizzaApp').controller('statusController',['$scope', '$http', '$r
             // if user is running mozilla then use it's built-in WebSocket
             window.WebSocket = window.WebSocket || window.MozWebSocket;
 
-            var connection = new WebSocket('ws://localhost:8080');
+            var connection = new WebSocket('ws://localhost:8080', 'request');
 
             connection.onopen =  function (event) { // listen to news event raised by the server
-                console.log(event );
-                connection.send('my other event', { my:event  }); 
+               
+                connection.send("Here's some text that the server is urgently awaiting!"); 
             };
 
             connection.onerror = function (error) {
                 // an error occurred when sending/receiving data
             };
+
+            connection.addEventListener("message", function(e) {
+                // The data is simply the message that we're sending back
+                var msg = e.data;
+
+                // Append the message
+                document.getElementById('log').innerHTML += '<br>' + msg;
+            });
+       
 
             connection.onmessage = function (message) {
                 // try to decode json (I assume that each message from server is json)
@@ -28,7 +37,7 @@ angular.module('pizzaApp').controller('statusController',['$scope', '$http', '$r
                 }
                 // handle incoming message
             };
-       
+
 
 
         $scope.orders = orders;

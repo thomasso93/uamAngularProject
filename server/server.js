@@ -123,8 +123,10 @@ app.post('/order', function (req, res) {
                         extras: position.extras
                     };
                 }),
+                orderInfo: req.body.orderInfo,
                 ordered: new Date(now),
-                estimated: new Date(now + _.random(15*60000, 90*60000))
+                estimated: new Date(now + _.random(15*60000, 90*60000)),
+                status: 0
             };
 
             res.json({
@@ -184,6 +186,18 @@ wsServer.on('request', function(request) {
     var index = wsConnections.push(connection);
 
     console.log('WebSocket Client connected on ' + new Date());
+
+    connection.on('message', function(message) {
+
+    // The string message that was sent to us
+    var msgString = message.utf8Data;
+
+    // Loop through all clients
+   
+     connection.sendUTF(msgString);
+  
+
+    });
 
     connection.on('close', function(con) {
         wsConnections.slice(index, 1);
