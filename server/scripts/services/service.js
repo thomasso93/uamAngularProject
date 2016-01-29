@@ -2,11 +2,11 @@ angular.module('pizzaApp').service('pizzaService', pizzaService);
 
  function pizzaService($http){
  	return {
-      sendOrder: function(cos) {
+      sendOrder: function(value) {
         return $http({
               method  : 'POST',
               url     : '/order',
-              data    : cos, 
+              data    : value, 
               headers : {'Content-Type': 'application/json'} 
              });
       },

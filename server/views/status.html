@@ -6,10 +6,12 @@
             <tr>
                 <th>Zamówiono</th>
                 <th>Przewidywany czas dostarczenia</th>
+                <th>Faza zamówienia</th>
             </tr>
             <tr>
                     <td>{{ status.ordered | date:'dd-MM-yyyy HH:mm'}}</td>
                     <td>{{ status.estimated | date:'dd-MM-yyyy HH:mm'}}</td>
+                    <td>{{ status.status}}</td>
             </tr>
         </table>
           <h1>Zamówienie:</h1>  

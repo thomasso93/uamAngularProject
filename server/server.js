@@ -151,27 +151,7 @@ app.get('/order/:id', function (req, res) {
     }, _.random(100, 1500));
 });
 
- setInterval(function () {
-     _.forEach(orders, function (order, id) {
-        var diff = order.estimated - order.ordered;
 
-        if (order.status < 1 && order.ordered * 1 + diff * 0.2 <= Date.now()) {
-            order.status = 1;
-            console.log('Order ' + id + ' changed status to 1');
-            updateClients(id, order);
-        }
-        if (order.status < 2 && order.ordered * 1 + diff * 0.5 <= Date.now()) {
-            order.status = 2;
-            console.log('Order ' + id + ' changed status to 2');
-            updateClients(id, order);
-        }
-        if (order.status < 3 && order.estimated <= Date.now()) {
-            order.status = 3;
-            console.log('Order ' + id + ' changed status to 3');
-            updateClients(id, order);
-         }
-     });
-}, 500);
 
 httpServer = app.listen(8080, function () {
      console.log('Server running on port 8080.');
@@ -193,7 +173,7 @@ wsServer.on('request', function(request) {
     var msgString = message.utf8Data;
 
     // Loop through all clients
-   
+        
      connection.sendUTF(msgString);
   
 

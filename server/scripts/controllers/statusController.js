@@ -1,14 +1,32 @@
 angular.module('pizzaApp').controller('statusController',['$scope', '$http', '$routeParams', 'pizzaService', 'orders', function($scope, $http, $routeParams, pizzaService, orders) {
         
-        
+            $scope.orders = orders;
+    
+            $scope.orderId = $routeParams.id;
+
+            $scope.value = "cos";
+
+    
+            $scope.getStatus = function(status){
+                return (status);
+            };
+           
+
             // if user is running mozilla then use it's built-in WebSocket
             window.WebSocket = window.WebSocket || window.MozWebSocket;
 
             var connection = new WebSocket('ws://localhost:8080', 'request');
 
             connection.onopen =  function (event) { // listen to news event raised by the server
-               
-                connection.send("Here's some text that the server is urgently awaiting!"); 
+                var time = new Date();
+
+                var msg = {
+                    type: "Data złożenia zamówienia",
+                    date: Date.now()
+              };
+                connection.send(JSON.stringify(msg)); 
+
+
             };
 
             connection.onerror = function (error) {
@@ -40,15 +58,18 @@ angular.module('pizzaApp').controller('statusController',['$scope', '$http', '$r
 
 
 
-        $scope.orders = orders;
-    
-        $scope.orderId = $routeParams.id;
-    
+        
+        
         $scope.getExtras = function () {
             var index = $scope.orders.length - 1;
             return $scope.orders[index].extras;
         };
     
+
+        $scope.total = $scope.totalPrice();
+    
+        $scope.extras = $scope.getExtras();    
+
         $scope.getExtrasCost = function () {
             var index = $scope.orders.length - 1;
             var length = $scope.orders[index].extras.length;
@@ -61,6 +82,7 @@ angular.module('pizzaApp').controller('statusController',['$scope', '$http', '$r
         
          pizzaService.getOrderStatus($scope.orderId).then(function(data) {
 		    $scope.status = data.data;
+            $scope.value = $scope.getStatus($scope.status.status)
             $scope.getExtrasCost(); 
 		});
     
@@ -70,9 +92,7 @@ angular.module('pizzaApp').controller('statusController',['$scope', '$http', '$r
             $scope.total = total.toFixed(2);
         };
     
-        $scope.total = $scope.totalPrice();
-    
-        $scope.extras = $scope.getExtras();    
+        
     
         
         
