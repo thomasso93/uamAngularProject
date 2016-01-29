@@ -1,10 +1,10 @@
 #Project - Pizzeria
 
 ####IMPORTANT NOTE FOR TEACHERS:
- *To start the project must do the following:
- *git clone /repo/, cd server/ npm install
- *After gulp build:prod please use command gulp index2
- *node server.js - that will start project on localhost:8080
+####To start the project must do the following:
+ * Use git clone /repo/, cd server/ npm install
+ * After gulp build:prod please use command gulp index2
+ * Use node server.js - that will start project on localhost:8080
 
 ####TODO:
 
