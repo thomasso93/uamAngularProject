@@ -4,7 +4,7 @@ angular.module('pizzaApp').controller('statusController',['$scope', '$http', '$r
     
             $scope.orderId = $routeParams.id;
 
-            $scope.value = "cos";
+            $scope.value = "";
 
     
             $scope.getStatus = function(status){
@@ -82,7 +82,7 @@ angular.module('pizzaApp').controller('statusController',['$scope', '$http', '$r
         
          pizzaService.getOrderStatus($scope.orderId).then(function(data) {
 		    $scope.status = data.data;
-            $scope.value = $scope.getStatus($scope.status.status)
+            $scope.value = $scope.getStatus($scope.status.status);
             $scope.getExtrasCost(); 
 		});
     

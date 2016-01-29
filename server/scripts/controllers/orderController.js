@@ -30,7 +30,7 @@ angular.module('pizzaApp').controller('orderController',['$scope', '$http','orde
             $scope.changePrice(-Math.abs(extra.price));
             var index = $scope.orderedExtras.indexOf(extra);
             $scope.orderedExtras.splice(index, 1);
-        }
+        };
 
         $scope.sendItNow = function(){     
         pizzaService.sendOrder($scope.orders).success(function (data, status) {

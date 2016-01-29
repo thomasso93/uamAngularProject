@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     setTimeout(function () {
-        res.sendFile(__dirname + '/index.html');
+        res.sendFile(__dirname + '/build/page.html');
     }, _.random(100, 1500));
 });
 

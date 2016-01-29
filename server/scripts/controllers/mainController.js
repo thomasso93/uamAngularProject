@@ -3,7 +3,7 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
         pizzaService.getMenu().then(function(data) {
             $scope.menuRes = data.data;
             $scope.addIngredientsLength();
-            $scope.groupBy( 'ingredientsNumber' )
+            $scope.groupBy('ingredientsNumber');
         });
     
         pizzaService.getIngredients().then(function(data) {
@@ -18,7 +18,7 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
             
             dialog.closePromise.then( function () {
                 index = $scope.currentIndex-1;
-                //w przyszłości należy dodać do składników a nie zastępować (np. gdy mamy juz pizza a dodajemy jej składniki)
+
                 $scope.orders[index].extraIngredients = $scope.extraIngredients;
                 $scope.extraIngredients = [];
             });
@@ -147,7 +147,7 @@ angular.module('pizzaApp').controller('mainController',['$scope', '$http', 'orde
         };
     
         $scope.addNewOrder = function (order) {
-            if (order.price != 0) {
+            if (order.price !== 0) {
                 var index = $scope.findOrder(order); 
                 order.extraIngredients = $scope.extraIngredients;
                 if (index != -1) {

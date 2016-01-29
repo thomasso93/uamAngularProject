@@ -9,7 +9,7 @@ var filesToMove = [
         './scripts/**/*',
         './css/*',
         './views/*',
-        './index.html'
+        './page.html'
     ];
 
 
@@ -19,11 +19,11 @@ var filesToMove2 = [
         './scripts/*',
         './css/*',
         './views/*',
-        './index.html'
+        './page.html'
  ];
  
 gulp.task('index', function () {
-  var target = gulp.src('index.html');
+  var target = gulp.src('page.html');
   // It's not necessary to read the files (will speed up things), we're only after their paths: 
   var sources = gulp.src(['./scripts/lib/angular.min.js','./scripts/lib/*.js', './scripts/*.js','./scripts/services/*.js','./scripts/controllers/*.js','./css/*.css'], {read: false});
  
@@ -32,7 +32,7 @@ gulp.task('index', function () {
 });
 
 gulp.task('index2', ['concat'], function () {
-  var target = gulp.src('./build/index.html');
+  var target = gulp.src('./build/page.html');
   // It's not necessary to read the files (will speed up things), we're only after their paths: 
   var sources = gulp.src(['./build/scripts/lib/angular.min.js','./build/scripts/lib/*.js', './build/scripts/*.js','./build/scripts/services/*.js','./build/scripts/controllers/concat.js','./build/css/*.css'], {read: false});
  
@@ -52,7 +52,7 @@ gulp.task('js-fef', function(){
         .pipe(gulp.dest('./build/scripts/controllers'));
 });
 
-gulp.task('move1', function(){
+gulp.task('build:dev', function(){
   gulp.src(filesToMove, { base: './' })
   .pipe(gulp.dest('build'));
 });

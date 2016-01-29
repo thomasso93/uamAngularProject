@@ -3,23 +3,23 @@ var pizzaApp = angular.module('pizzaApp', ['ngRoute','ngMap', 'ngDialog','ngCook
 	 pizzaApp.config(['$routeProvider', function($routeProvider) {
             $routeProvider.
                 when('/main', {
-                    templateUrl: '/views/main.html',
+                    templateUrl: 'build/views/main.html',
                     controller: 'mainController'
                 }).
                 when('/contact', {
-                    templateUrl: '/views/contact.html',
+                    templateUrl: 'build/views/contact.html',
                     controller: 'contactController'
                 }).
                 when('/order', {
-                    templateUrl: '/views/order.html',
+                    templateUrl: 'build/views/order.html',
                     controller: 'orderController'
                 }).
                 when('/status/:id', {
-                    templateUrl: '/views/status.html',
+                    templateUrl: 'build/views/status.html',
                     controller: 'statusController'
                 }).
                 when('/', {
-                    templateUrl: '/views/main.html',
+                    templateUrl: 'build/views/main.html',
                     controller: 'mainController'
                 }).
                 otherwise({
